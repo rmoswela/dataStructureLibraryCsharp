@@ -15,14 +15,14 @@ namespace DataStructures
     }
 
     //get data at a specified index
-    //Access = O(1) on average and worst case
+    //time complexity to Access = O(1) on average and worst case
     public dynamic GetItem(int index)
     {
       return _data[index];
     }
 
     //add data at the end of the array
-    //Insertion = O(n) on average and worst case
+    //time complexity for Insertion = O(n) on average and worst case
     public void AddItem<T>(T t)
     {
       var count = 0;
@@ -33,6 +33,21 @@ namespace DataStructures
       newArray[count] = t;
       this._data = newArray;
       this._length = _length + 1;
+    }
+
+    //removes last item in the array
+    //time complexity for Deletion of last item = 0(n) average and worst case
+    public int RemoveLastItem()
+    {
+      var newArray = new dynamic [_length - 1];
+      for (int loopIndex = 0, count = 0; loopIndex < this._length - 1; loopIndex++)
+      {
+        newArray[count++] = this._data[loopIndex];
+      }
+
+      this._data = newArray;
+      _length = _length - 1;
+      return _length;
     }
 
     //length property

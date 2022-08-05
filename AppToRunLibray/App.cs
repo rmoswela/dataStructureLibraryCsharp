@@ -14,6 +14,8 @@ namespace AppToRunLibrary
       arr.AddItem("Neo");
       arr.AddItem("Khachana");
       Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
+      var len = arr.RemoveLastItem();
+      Console.WriteLine("ArrayLength after deletion: {0}, LastItem: {1}", len, arr.GetItem(arr.Length - 1));
     }
   }
 }
