@@ -13,9 +13,12 @@ namespace AppToRunLibrary
       arr.AddItem("Moswela");
       arr.AddItem("Neo");
       arr.AddItem("Khachana");
+      arr.AddItem("Meleko");
       Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
       arr.RemoveLastItem();
       Console.WriteLine("ArrayLength after deletion: {0}, LastItem: {1}", arr.Length, arr.GetItem(arr.Length - 1));
+      arr.RemoveItem(1);
+      Console.WriteLine("ArrayLength after deletion of specified index: {0}, LastItem: {1}", arr.Length, arr.GetItem(1));
     }
   }
 }
