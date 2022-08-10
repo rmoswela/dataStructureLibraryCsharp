@@ -27,7 +27,7 @@ namespace DataStructures
     {
       var count = 0;
       var newArray = new dynamic[_length + 1];
-      for (var loopIndex = 0; loopIndex < _data.Length; loopIndex++) {
+      for (var loopIndex = 0; loopIndex < _length; loopIndex++) {
         newArray[count++] = _data[loopIndex];
       }
       newArray[count] = t;
