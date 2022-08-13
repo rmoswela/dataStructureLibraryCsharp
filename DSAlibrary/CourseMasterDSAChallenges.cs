@@ -5,7 +5,7 @@ namespace DataStructures
 {
   public class CourseMasterDSAChallenges
   {
-    //Time and Space Complexity is O(n)
+    //Time and Space Complexity is O(n) - Linear time and space usage
     public string Reverse(string str)
     {
       var newStr = new char[str.Length];
@@ -17,7 +17,7 @@ namespace DataStructures
       return new string(newStr);
     }
 
-    //Time and Space Complexity is 0(n)
+    //Time and Space Complexity is 0(n) - Linear time and space usage
     public int[] MergeSortedArrays(int[] arr1, int[] arr2)
     {
       int i = 0, j = 0, loop = 0;
@@ -45,7 +45,7 @@ namespace DataStructures
      * Wildcard: Can you come up with an algorithm that is less than O(n2) time complexity
      */
 
-    //Time and Space Complexity is 0(n)
+    //Time and Space Complexity is 0(n) - Linear time and space utilized
     public int[] TwoSum(int[] nums, int target)
     {
       var hash = new Hashtable();
@@ -69,7 +69,7 @@ namespace DataStructures
      * Wildcard: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
      */
 
-    //Time Complexity is 0(n) and Space is 0(1)
+    //Time Complexity is 0(n) and Space is 0(1) - Linear time and Constant use of space
     public int MaxSubArray(int[] nums)
     {
       int currentMaxEnding = 0, maxSoFar = int.MinValue;
@@ -95,16 +95,50 @@ namespace DataStructures
      * Constraint: 1 <= nums.length <= 104    -231 <= nums[i] <= 231 - 1
      * Wildcard: minimize the total number of operations done
      */
+    //This is the brute force solution
+    //Time complexity is 0(n*n) and 0(1) space - Quadratic time constant space usage
     public int[] MoveZeroes(int[] nums)
     {
-      for (var count = 0; count < nums.Length; count++)
+      for (int index = 0, count = 0; index < nums.Length; index++)
       {
-        Console.WriteLine("Element: {0} Index: {1}", nums[count], count);
         if (nums[count] == 0)
-          Array.Copy(nums, count, nums, nums.Length - 1, 1);
+        {
+          var countTemp = count;
+          var inner = count + 1;
+          if (inner < nums.Length && nums[count] == nums[inner]) 
+            count--;
+          while (inner < nums.Length)
+          {
+            SwapValues(nums, inner++, countTemp++);
+          }
+        }
+        count++;
+      }
+      return nums;
+    }
+
+    //The most optimal solution
+    //Time complexity 0(n) and 0(1) Space - Linear time and Constant space usage 
+    public int[] MoveZeroesOptimal(int[] nums)
+    {
+      for (int lastNonZeroFoundAt = 0, current = 0; current < nums.Length; current++)
+      {
+        if (nums[current] != 0)
+        {
+          //swapping using a tuple - avail in c# 7.0 plus
+          (nums[lastNonZeroFoundAt], nums[current]) = (nums[current], nums[lastNonZeroFoundAt++]);
+        }
       }
 
       return nums;
+    }
+
+    //helper function to swap values
+    private void SwapValues(int[] arr,int value1, int value2)
+    {
+      var temp = arr[value1];
+      arr[value1] = arr[value2];
+      arr[value2] = temp;
     }
   }
 }

@@ -21,9 +21,9 @@ namespace AppToRunLibrary
       var arrayInt = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
       var subarray = dsa.MaxSubArray(arrayInt);
       Console.WriteLine("Largest sum value: {0}", subarray);
-      var nums = new int[] { 0, 1, 0, 3, 12 };
-      var zeroArr = dsa.MoveZeroes(nums);
-      Console.WriteLine("Output: {0}", string.Join(",", zeroArr));
+      var nums = new int[] { 0, 1};
+      var zeroArr = dsa.MoveZeroesOptimal(nums);
+      Console.WriteLine("Input: {0} \n Output: {1}", string.Join(",", nums), string.Join(",", zeroArr));
       /*arr.AddItem("Reuben");
       arr.AddItem("Moswela");
       arr.AddItem("Neo");
