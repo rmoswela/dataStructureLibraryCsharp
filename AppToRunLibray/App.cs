@@ -24,6 +24,9 @@ namespace AppToRunLibrary
       var nums = new int[] { 0, 1};
       var zeroArr = dsa.MoveZeroesOptimal(nums);
       Console.WriteLine("Input: {0} \n Output: {1}", string.Join(",", nums), string.Join(",", zeroArr));
+      var numbers = new int[] {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
+      var res = dsa.ContainsDuplicate(numbers);
+      Console.WriteLine("Does the Array Have duplicates? {0}", res);
       /*arr.AddItem("Reuben");
       arr.AddItem("Moswela");
       arr.AddItem("Neo");
