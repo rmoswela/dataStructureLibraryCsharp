@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace DataStructures
 {
@@ -20,21 +21,19 @@ namespace DataStructures
         {
             return _data[index];
         }
-
-        //add data at the end of the array
-        //time complexity for Insertion = O(n) on average and worst case
-        public void AddItem<T>(T t)
-        {
-            var count = 0;
-            var newArray = new dynamic[_length + 1];
-            for (var loopIndex = 0; loopIndex < _data.Length; loopIndex++)
-            {
-                newArray[count++] = _data[loopIndex];
-            }
-            newArray[count] = t;
-            _data = newArray;
-            _length++;
-        }
+    //add data at the end of the array
+    //time complexity for Insertion = O(n) on average and worst case
+    public void AddItem<T>(T t)
+    {
+      var count = 0;
+      var newArray = new dynamic[_length + 1];
+      for (var loopIndex = 0; loopIndex < _length; loopIndex++) {
+        newArray[count++] = _data[loopIndex];
+      }
+      newArray[count] = t;
+      _data = newArray;
+      _length++;
+    }
 
         //removes item at the specified index
         //time complexity for this Deletion = 0(n) for both average and worst cases
