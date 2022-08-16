@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System;
 using System.Collections.Generic;
 
 namespace DataStructures
@@ -49,12 +48,12 @@ namespace DataStructures
     //Time and Space Complexity is 0(n) - Linear time and space utilized
     public int[] TwoSum(int[] nums, int target)
     {
-      var hash = new Hashtable();
-      for (var loop = 0; loop < nums.Length; loop++)
+      Hashtable hash = new Hashtable();
+      for (int loop = 0; loop < nums.Length; loop++)
       {
-        var comp = target - nums[loop];
+        int comp = target - nums[loop];
         if (hash.ContainsKey(comp))
-          return new int[] {(int) hash[comp], loop};
+          return new[] {(int) hash[comp], loop};
         hash.Add(nums[loop], loop);
       }
       return null;
@@ -153,7 +152,7 @@ namespace DataStructures
     public bool ContainsDuplicate(int[] nums)
     {
       //hashset used as it doesn't allow duplicate elements
-      var hash = new HashSet<int>();
+      HashSet<int> hash = new HashSet<int>();
       for (var index = 0; index < nums.Length; index++)
       {
         if (hash.Contains(nums[index]))
@@ -175,13 +174,10 @@ namespace DataStructures
     public int[] Rotate(int[] nums, int k)
     {
       var arr = new int[nums.Length];
-
-      for (var index = 0; index < nums.Length; index++)
-      {
+      for (var index = 0; index < nums.Length; index++) {
         var mod = (index + k) % nums.Length;
         arr[mod] = nums[index];
       }
-
       return arr;
     }
   }
