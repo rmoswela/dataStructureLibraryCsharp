@@ -14,3 +14,5 @@
 
 # Visual Studio 2015
 .vs/
+# Mac files
+.DS_*
