@@ -27,6 +27,10 @@ namespace AppToRunLibrary
       var numbers = new int[] {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
       var res = dsa.ContainsDuplicate(numbers);
       Console.WriteLine("Does the Array Have duplicates? {0}", res);
+      var arrayVal = new int[] { 1, 2, 3, 4, 5, 6, 7};
+      var k = 3;
+      var output = dsa.Rotate(arrayVal, k);
+      Console.WriteLine("Input: {0}\n k: {1}\n Output: {2}", string.Join(",", arrayVal), k, string.Join(",", output));
       /*arr.AddItem("Reuben");
       arr.AddItem("Moswela");
       arr.AddItem("Neo");
