@@ -98,7 +98,7 @@ namespace DataStructures
      * Constraint: 1 <= nums.length <= 104    -231 <= nums[i] <= 231 - 1
      * Wildcard: minimize the total number of operations done
      */
-    //This is the brute force solution
+    //Brute force solution
     //Time complexity is 0(n*n) and 0(1) space - Quadratic time constant space usage
     public int[] MoveZeroes(int[] nums)
     {
