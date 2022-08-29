@@ -24,10 +24,12 @@ namespace DataStructures
       var results = new int[arr1.Length + arr2.Length];
       while (loop < results.Length)
       {
-        if (j >= arr2.Length || arr1.Length > 0 && arr1[i] < arr2[j]) {
+        if (j >= arr2.Length || arr1.Length > 0 && arr1[i] < arr2[j])
+        {
           results[loop++] = arr1[i++];
         }
-        else {
+        else
+        {
           results[loop++] = arr2[j++];
         }
       }
@@ -53,7 +55,7 @@ namespace DataStructures
       {
         int comp = target - nums[loop];
         if (hash.ContainsKey(comp))
-          return new[] {(int) hash[comp], loop};
+          return new[] { (int)hash[comp], loop };
         hash.Add(nums[loop], loop);
       }
       return null;
@@ -105,7 +107,7 @@ namespace DataStructures
         {
           var countTemp = count;
           var inner = count + 1;
-          if (inner < nums.Length && nums[count] == nums[inner]) 
+          if (inner < nums.Length && nums[count] == nums[inner])
             count--;
           while (inner < nums.Length)
           {
@@ -134,7 +136,7 @@ namespace DataStructures
     }
 
     //helper function to swap values
-    private void SwapValues(int[] arr,int value1, int value2)
+    private void SwapValues(int[] arr, int value1, int value2)
     {
       var temp = arr[value1];
       arr[value1] = arr[value2];
@@ -174,11 +176,66 @@ namespace DataStructures
     public int[] Rotate(int[] nums, int k)
     {
       var arr = new int[nums.Length];
-      for (var index = 0; index < nums.Length; index++) {
+      for (var index = 0; index < nums.Length; index++)
+      {
         var mod = (index + k) % nums.Length;
         arr[mod] = nums[index];
       }
       return arr;
+    }
+
+    /*
+     * Write a function to find the longest common prefix string amongst an array of strings.
+     * If there is no common prefix, return an empty string "". 
+     * Example1: Input: strs = ["flower","flow","flight"]      Output: "fl"
+     * Example2: Input: strs = ["dog","racecar","car"]         Output: ""
+     * Explanation: There is no common prefix among the input strings.
+     * Constraints: 1 <= strs.length <= 200       0 <= strs[i].length <= 200      strs[i] consists of only lowercase English letters.
+     */
+    // Brute force - Horizontal Scanning
+    // Time Complexity (0)N*2 - Space complexity (0)1
+    public string LongestCommonPrefixSol1(string[] strs)
+    {
+      if (strs.Length == 0)
+        return "";
+
+      var prefix = strs[0];
+      for (var outer = 1; outer < strs.Length; outer++)
+      {
+        //first occurance of prefix in string outer
+        while (strs[outer].IndexOf(prefix) != 0)
+        {
+          //no match remove? remove last character of prefix
+          prefix = prefix.Substring(0, prefix.Length - 1);
+          if (prefix.Length == 0)
+            return "";
+        }
+      }
+
+      return prefix;
+    }
+
+    // Brute force - Vertical Scanning
+    public string LongestCommonPrefix(string[] strs)
+    {
+      if (strs.Length == 0)
+        return "";
+
+      for (var count = 0; count < strs[0].Length; count++)
+      {
+        char c = strs[0][count];
+        for (var index = 1; index < strs.Length; index++)
+        {
+          //check if # of characters of first string is equal subsqent string or
+          //character in first string is not equal to that from compared string
+          if (count == strs[index].Length || strs[index][count] != c)
+          {
+            return strs[0].Substring(0, count);
+          }
+        }
+      }
+
+      return strs[0];
     }
   }
 }

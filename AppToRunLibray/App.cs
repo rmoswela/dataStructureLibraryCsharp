@@ -46,6 +46,9 @@ namespace AppToRunLibrary
       var output = dsa.Rotate(arrayVal, k);
       Console.WriteLine("Input: {0}\n k: {1}\n Output: {2}", string.Join(",", arrayVal), k,
         string.Join(",", output));
+      var stringsArr = new string[] { "cir", "car" };
+      var longestPrefix = dsa.LongestCommonPrefix(stringsArr);
+      Console.WriteLine("Input: {0}\n output: {1}", string.Join(" , ", stringsArr), longestPrefix);
     }
 
     private static myArray AddItemsToArray(myArray inputArray)
@@ -59,5 +62,4 @@ namespace AppToRunLibrary
       return inputArray;
     }
   }
-
 }
