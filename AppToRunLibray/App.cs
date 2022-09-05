@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataStructures;
 
 namespace AppToRunLibrary
@@ -49,6 +50,22 @@ namespace AppToRunLibrary
       var stringsArr = new string[] { "cir", "car" };
       var longestPrefix = dsa.LongestCommonPrefix(stringsArr);
       Console.WriteLine("Input: {0}\n output: {1}", string.Join(" , ", stringsArr), longestPrefix);
+      var array = new int[] { 12, 3, 1, 2, -6, 5, -8, 6 };
+      var sum = dsa.ThreeNumberSum(array, 0);
+      Console.WriteLine("Input: {0} target = {1}\n output: {2}", string.Join(" , ", array), 0, PrintItemsFrom2dArray(sum));
+    }
+
+    private static string PrintItemsFrom2dArray(List<int[]> array)
+    {
+      string toPrint = "[";
+      for (var index = 0; index < array.Count; index++)
+      {
+        toPrint = toPrint + "[ " + string.Join(" ", array[index]);
+        toPrint += " ]";
+        if (index == array.Count - 1)
+          toPrint += "]";
+      }
+      return toPrint;
     }
 
     private static myArray AddItemsToArray(myArray inputArray)

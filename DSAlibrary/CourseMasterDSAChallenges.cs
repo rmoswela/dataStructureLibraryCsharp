@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace DataStructures
@@ -216,6 +217,7 @@ namespace DataStructures
     }
 
     // Brute force - Vertical Scanning
+    // Time Complexity (0)N*2 - Space complexity (0)1
     public string LongestCommonPrefix(string[] strs)
     {
       if (strs.Length == 0)
@@ -236,6 +238,68 @@ namespace DataStructures
       }
 
       return strs[0];
+    }
+
+    /*
+     * Function that takes in non-empty array of distinct integers and and integer representing target sum.
+     * Function should find all triplets in array that sum to target sum and return two dimensional array of all the triplets.
+     * Numbers in each triplet should be ordered in asc and triplets themselves should be ordered in asc order with respect to number they hold
+     * If no three numbers sum up to target sum, return empty array.
+     * Example: Input: array = [12, 3, 1, 2, -6, 5, -8, 6] targetSum = 0; Output [[-8, 2, 6], [-8, 3, 5],  [-6, 1, 5]]
+     */
+    //Brute force solution
+    //Time Complexity is 2(0)n^2
+    public List<int[]> ThreeNumberSum(int[] array, int targetSum)
+    {
+      //create hashset
+      HashSet<int> hash = new HashSet<int>();
+      for (var count = 0; count < array.Length; count++)
+      {
+        hash.Add(array[count]);
+      }
+
+      var listOfArr = new List<int[]>();
+      for (int outer = 0; outer < array.Length; outer++)
+      {
+        var tempHash = new HashSet<int>(hash);
+        for (int inner = outer + 1; inner < array.Length; inner++)
+        {
+          var thirdVal = targetSum - array[outer] - array[inner];
+          if (tempHash.Contains(thirdVal) && thirdVal != array[outer] && thirdVal != array[inner])
+          {
+            var arr = new int[] { array[outer], array[inner], thirdVal };
+            Array.Sort(arr);
+            listOfArr.Add(arr);
+          }
+          tempHash.Remove(array[inner]);
+        }
+        hash.Remove(array[outer]);
+      }
+      for (int count = 0; count < listOfArr.Count; count++)
+      {
+        for (int inner = count + 1; inner < listOfArr.Count; inner++)
+        {
+          if (listOfArr[count][0] > listOfArr[inner][0])
+          {
+            Swap(listOfArr, count, inner);
+          }
+          if (listOfArr[count][0] == listOfArr[inner][0])
+          {
+            if (listOfArr[count][1] > listOfArr[inner][1])
+            {
+              Swap(listOfArr, count, inner);
+            }
+          }
+        }
+      }
+      return listOfArr;
+    }
+
+    public void Swap(IList<int[]> list, int a, int b)
+    {
+      var temp = list[a];
+      list[a] = list[b];
+      list[b] = temp;
     }
   }
 }
