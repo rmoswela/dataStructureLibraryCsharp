@@ -98,7 +98,7 @@ namespace DataStructures
      * Constraint: 1 <= nums.length <= 104    -231 <= nums[i] <= 231 - 1
      * Wildcard: minimize the total number of operations done
      */
-    //This is the brute force solution
+    //Brute force solution
     //Time complexity is 0(n*n) and 0(1) space - Quadratic time constant space usage
     public int[] MoveZeroes(int[] nums)
     {
@@ -300,6 +300,89 @@ namespace DataStructures
       var temp = list[a];
       list[a] = list[b];
       list[b] = temp;
+    }
+
+    /*
+     * Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+     * Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+     * Example1: Input: nums = [2,5,1,3,4,7], n = 3 Output: [2,3,5,4,1,7] 
+     * Explanation: Since x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 then the answer is [2,3,5,4,1,7].
+     * Example2: Input: nums = [1,2,3,4,4,3,2,1], n = 4 Output: [1,4,2,3,3,2,4,1]
+     * Example3: Input: nums = [1,1,2,2], n = 2 Output: [1,2,1,2]
+     * Constraints: 1 <= n <= 500    nums.length == 2n    1 <= nums[i] <= 10^3
+     */
+    //Time Complexity and Space Complexity is (0)n
+    public int[] Shuffle(int[] nums, int n)
+    {
+      var arr = new int[nums.Length];
+      int index = 0, x = 0, y = n;
+      while (index < nums.Length) {
+        if (index % 2 == 0) {
+          arr[index] = nums[x++];
+        }
+        else {
+          arr[index] = nums[y++];
+          index++;
+        }
+      }
+      return arr;
+    }
+
+    /*
+     * You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+     * A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth
+     * Example1: Input: accounts = [[1,2,3],[3,2,1]] Output: 6
+     * Explanation: 1st customer has wealth = 1 + 2 + 3 = 6   2nd customer has wealth = 3 + 2 + 1 = 6
+     * Both customers are considered the richest with a wealth of 6 each, so return 6.
+     * Example2: Input: accounts = [[1,5],[7,3],[3,5]] Output: 10 
+     * Explanation:  1st customer has wealth = 6   2nd customer has wealth = 10   3rd customer has wealth = 8
+     * The 2nd customer is the richest with a wealth of 10.
+     * Example3: Input: accounts = [[2,8,7],[7,1,3],[1,9,5]] Output: 17
+     * Constraints: m == accounts.length   n == accounts[i].length   1 <= m, n <= 50 1 <= accounts[i][j] <= 100
+     */
+    //Brute force solution
+    //Time Complexity is (0)n^2 and Space compelxity is (0)1
+    public int MaximumWealth(int[][] accounts)
+    {
+      var max = 0;
+      for (int cust = 0; cust < accounts.Length; cust++) {
+        var sum = 0;
+        for (int bank = 0; bank < accounts[cust].Length; bank++) {
+          sum += accounts[cust][bank];
+        }
+        max = Math.Max(sum, max);
+      }
+     return max;
+    }
+
+    /*
+     * There is a programming language with only four operations and one variable X:
+     * ++X and X++ increments the value of the variable X by 1.
+     * --X and X-- decrements the value of the variable X by 1.
+     * Initially, the value of X is 0. Given an array of strings operations containing a list of operations, return the final value of X after performing all the operations.
+     * Example1: Input: operations = ["--X","X++","X++"] Output: 1
+     * Explanation: The operations are performed as follows: Initially, X = 0.
+     * --X: X is decremented by 1, X =  0 - 1 = -1.
+     * X++: X is incremented by 1, X = -1 + 1 =  0.
+     * X++: X is incremented by 1, X =  0 + 1 =  1.
+     * Example2: Input: operations = ["X++","++X","--X","X--"] Output: 0
+     * Explanation: The operations are performed as follows: Initially, X = 0.
+     * X++: X is incremented by 1, X = 0 + 1 = 1.
+     * ++X: X is incremented by 1, X = 1 + 1 = 2.
+     * --X: X is decremented by 1, X = 2 - 1 = 1.
+     * X--: X is decremented by 1, X = 1 - 1 = 0.
+     * Constraints: 1 <= operations.length <= 100  operations[i] will be either "++X", "X++", "--X", or "X--".
+     */
+    //Time Complexity is (0)n and Space Complexity is (0)1
+    public int FinalValueAfterOperations(string[] operations) {
+      var output = 0;
+      for (int count = 0; count < operations.Length; count++){
+         if (operations[count][0] == '-' || operations[count][1] == '-')
+            output--;
+         else
+            output++;
+      }
+      return output;  
     }
   }
 }
