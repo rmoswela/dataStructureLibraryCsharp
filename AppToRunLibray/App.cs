@@ -53,6 +53,10 @@ namespace AppToRunLibrary
       var array = new int[] { 12, 3, 1, 2, -6, 5, -8, 6 };
       var sum = dsa.ThreeNumberSum(array, 0);
       Console.WriteLine("Input: {0} target = {1}\n output: {2}", string.Join(" , ", array), 0, PrintItemsFrom2dArray(sum));
+      var arrayOne = new int[] { -1, 5, 10, 20, 28, 3 };
+      var arrayTwo = new int[] { 26, 134, 135, 15, 17 };
+      var diff = dsa.SmallestDifference(arrayOne, arrayTwo);
+      Console.WriteLine("Input: arrayOne {0} arrayTwo {1}\n output: {2}", string.Join(" , ", arrayOne), string.Join(" , ", arrayTwo), string.Join(" , ", diff));
     }
 
     private static string PrintItemsFrom2dArray(List<int[]> array)

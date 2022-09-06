@@ -348,6 +348,100 @@ namespace DataStructures
     }
 
     /*
+     * Write a function that takes in two non-empty arrays of integers, finds the pair of numbers (one from each array) whose absolute difference is closest to zero.
+     * Then returns an array containing these two numbers, with the number from the first array in the first position
+     * Note that the absolute difference of two integers is the distance between them on the real number line. 
+     * For example, the absolute difference of -5 and 5 is 10, and the absolute difference of -5 and -4 is 1.
+     * You can assume that there will only be one pair of numbers with the smallest difference
+     * Example1: Input arrayOne = [-1, 5, 10, 20, 28, 3] arrayTwo = [26, 134, 135, 15, 17] output = [28, 26]
+     */
+    //brute force solution
+    // Time complexity is (0)n^2 and Space Complexity is (0)n
+    public int[] SmallestDifferenceSol1(int[] arrayOne, int[] arrayTwo)
+    {
+      int closestToZero = int.MaxValue;
+      var arrVal = new int[2];
+      for (int indexOne = 0; indexOne < arrayOne.Length; indexOne++)
+      {
+        for (int indexTwo = 0; indexTwo < arrayTwo.Length; indexTwo++)
+        {
+          var diff = AbsoluteDifference(arrayOne[indexOne], arrayTwo[indexTwo]);
+          if (diff < closestToZero)
+          {
+            arrVal[0] = arrayOne[indexOne];
+            arrVal[1] = arrayTwo[indexTwo];
+            closestToZero = diff;
+          }
+        }
+      }
+      return arrVal;
+    }
+
+    //Effienct solution
+    //Time Complexity is (0)n+m and space complexity is (0)2 which (0)1
+    //sorting this makes the function have a time Complexity of O(n log n)
+    //ref https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-6.0#system-array-sort(system-array)
+    public int[] SmallestDifference (int[] arrayOne, int[] arrayTwo)
+    {
+      Array.Sort(arrayOne);
+      Array.Sort(arrayTwo);
+      var closestToZero = AbsoluteDifference(arrayOne[0], arrayTwo[0]);
+      int indexOne = 0, indexTwo = 0;
+      var result = new int[] { arrayOne[0], arrayTwo[0]};
+      while (indexOne < arrayOne.Length && indexTwo < arrayTwo.Length)
+      {
+        var tempVal = AbsoluteDifference(arrayOne[indexOne], arrayTwo[indexTwo]);
+        if (arrayOne[indexOne] > arrayTwo[indexTwo])
+        {
+          if (tempVal < closestToZero)
+          {
+            closestToZero = tempVal;
+            result[0] = arrayOne[indexOne];
+            result[1] = arrayTwo[indexTwo];
+          }
+          indexTwo++;
+        }
+        else if (arrayOne[indexOne] < arrayTwo[indexTwo])
+        {
+          if (tempVal < closestToZero)
+          {
+            closestToZero = tempVal;
+            result[0] = arrayOne[indexOne];
+            result[1] = arrayTwo[indexTwo];
+          }
+          indexOne++;
+        }
+        else
+        {
+          closestToZero = AbsoluteDifference(arrayOne[indexOne], arrayTwo[indexTwo]);
+          result[0] = arrayOne[indexOne];
+          result[1] = arrayTwo[indexTwo];
+          return result;
+        }
+      }
+      return result;
+    }
+
+    private int AbsoluteDifference(int numOne, int numTwo)
+    {
+      int diff;
+      if (numOne < 0 && numTwo >= 0)
+      {
+        numOne = Math.Abs(numOne);
+        diff = numOne + numTwo;
+      }
+      else if (numTwo < 0 && numOne >= 0)
+      {
+        numTwo = Math.Abs(numTwo);
+        diff = numOne + numTwo;
+      }
+      else
+        diff = Math.Abs(numOne - numTwo);
+      return diff;
+    }
+      
+
+    /*
      * Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
      * Return the array in the form [x1,y1,x2,y2,...,xn,yn].
      * Example1: Input: nums = [2,5,1,3,4,7], n = 3 Output: [2,3,5,4,1,7] 
