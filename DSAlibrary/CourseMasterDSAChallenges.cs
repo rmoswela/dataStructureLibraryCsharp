@@ -249,7 +249,7 @@ namespace DataStructures
      */
     //Brute force solution
     //Time Complexity is 2(0)n^2
-    public List<int[]> ThreeNumberSum(int[] array, int targetSum)
+    public List<int[]> ThreeNumberSumSol1(int[] array, int targetSum)
     {
       //create hashset
       HashSet<int> hash = new HashSet<int>();
@@ -300,6 +300,51 @@ namespace DataStructures
       var temp = list[a];
       list[a] = list[b];
       list[b] = temp;
+    }
+
+    //more efficient algorithm
+    /*
+     * step1: sort the array and create a new list of arrays to add three sum numbers
+     * step2: create a two loops with an index and two pointers in array, left(just after the index) and right (end)
+     * step3: currentSum = currentNum(index) + left + right;
+     * step4: check the currentSum and compare with targetSum the check which pointer to move
+     * move left if currentSum is less than targetSum, right if currentSum is greater than target (this is where sorted becomes relevant)
+     * step5: do this until you find target sum, when targeSum found the two pointers move at the same time
+     * step6: when the left and right pointer cross each other, you move index to next and restart the pointers to left and right
+     * step6: once index has passed a number never go back to check it again
+     * 
+     */
+    //Time Complexity is (0)n^2 and Space Complexity is (0)n
+    public List<int[]> ThreeNumberSum(int[] array, int targetSum)
+    {
+      //step 1
+      Array.Sort(array);
+      var threeSumArr = new List<int[]>();
+      //step 2
+      for (int index = 0; index < array.Length; index++)
+      {
+        var left = index + 1;
+        var right = array.Length - 1;
+        while (left < right)
+        {
+          //step 3
+          var currentSum = array[index] + array[left] + array[right];
+          //step 4, 5 ,6
+          if (currentSum == targetSum)
+          {
+            threeSumArr.Add(new int[] { array[index], array[left], array[right] });
+            left++;
+            right--;
+          }
+          else if (currentSum < targetSum)
+          {
+            left++;
+          }
+          else
+            right--;
+        }
+      }
+      return threeSumArr;
     }
 
     /*
