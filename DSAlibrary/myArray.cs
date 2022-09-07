@@ -8,10 +8,16 @@ namespace DataStructures
     private int _length;
     private dynamic[] _data;
 
-    //array is empty and of length zero at instantiation
+    //initializes an instance of an empty array is empty and of length zero
     public myArray()
     {
       _length = 0;
+      _data = new dynamic[] { };
+    }
+    //initializes a new instance of empty array that has specified capacity
+    public myArray(int length)
+    {
+      _length = length;
       _data = new dynamic[] { };
     }
 
