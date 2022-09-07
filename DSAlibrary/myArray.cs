@@ -85,7 +85,6 @@ namespace DataStructures
         if (t == _data[loop])
           return loop;
       }
-
       return -1;
     }
 
@@ -100,6 +99,18 @@ namespace DataStructures
       }
 
       return -1;
+    }
+
+    //Copy elements from source array to this one
+    public void Copy(myArray sourceArray, int length )
+    {
+      var newArr = new dynamic[length];
+      for (int index = 0; index < length; index++)
+      {
+        newArr[index] = sourceArray.GetItem(index);
+      }
+      _data = newArr;
+      _length = length;
     }
 
     //length property

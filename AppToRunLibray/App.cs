@@ -11,7 +11,10 @@ namespace AppToRunLibrary
       dynamic arr = new myArray();
       Console.WriteLine("Array: {0}, Arr Length: {1}", arr, arr.Length);
       arr = AddItemsToArray(arr);
+      dynamic arrCopy = new myArray();
+      arrCopy.Copy(arr, arr.Length);
       Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
+      Console.WriteLine("arrCopyItem: {0}, arrCopyLength: {1}", arrCopy.GetItem(3), arrCopy.Length);
       arr.RemoveLastItem();
       Console.WriteLine("ArrayLength after deletion: {0}, LastItem: {1}", arr.Length,
         arr.GetItem(arr.Length - 1));
