@@ -8,10 +8,10 @@ namespace AppToRunLibrary
   {
     private static void Main(string[] args)
     {
-      dynamic arr = new myArray();
+      dynamic arr = new MyArray();
       Console.WriteLine("Array: {0}, Arr Length: {1}", arr, arr.Length);
       arr = AddItemsToArray(arr);
-      dynamic arrCopy = new myArray();
+      dynamic arrCopy = new MyArray();
       arrCopy.Copy(arr, arr.Length);
       Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
       Console.WriteLine("arrCopyItem: {0}, arrCopyLength: {1}", arrCopy.GetItem(3), arrCopy.Length);
@@ -78,7 +78,7 @@ namespace AppToRunLibrary
       return toPrint;
     }
 
-    private static string PrintItemsInArray(myArray array)
+    private static string PrintItemsInArray(MyArray array)
     {
       string print = "[";
       for (int index = 0; index < array.Length; index++)
@@ -90,7 +90,7 @@ namespace AppToRunLibrary
       return print;
     }
 
-    private static myArray AddItemsToArray(myArray inputArray)
+    private static MyArray AddItemsToArray(MyArray inputArray)
     {
       var names = new string[] {"Reuben", "Moswela", "Neo", "Khachana", "Meleko", "Reuben", "Gabrielle"};
       for (int loop = 0; loop < names.Length; loop++)

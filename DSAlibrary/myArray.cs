@@ -1,18 +1,18 @@
 ﻿namespace DataStructures
 {
-  public class myArray
+  public class MyArray
   {
     private int _length;
     private dynamic[] _data;
 
     //initializes an instance of an empty array is empty and of length zero
-    public myArray()
+    public MyArray()
     {
       _length = 0;
       _data = new dynamic[] { };
     }
     //initializes a new instance of empty array that has specified capacity
-    public myArray(int length)
+    public MyArray(int length)
     {
       _length = length;
       _data = new dynamic[] { };
@@ -98,7 +98,7 @@
     }
 
     //Copy elements from source array to this one
-    public void Copy(myArray sourceArray, int length )
+    public void Copy(MyArray sourceArray, int length )
     {
       var newArr = new dynamic[length];
       //iterates through and copies all items
