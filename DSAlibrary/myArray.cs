@@ -34,11 +34,12 @@ namespace DataStructures
     {
       var count = 0;
       var newArray = new dynamic[_length + 1];
+      //iterates to end of array then increments by 1 to allow for new item
       for (var loopIndex = 0; loopIndex < _length; loopIndex++)
       {
         newArray[count++] = _data[loopIndex];
       }
-
+      //assigns items to data and increments length
       newArray[count] = t;
       _data = newArray;
       _length++;
@@ -56,7 +57,6 @@ namespace DataStructures
           newArray[count++] = _data[loopIndex];
         }
       }
-
       _data = newArray;
       _length--;
     }
@@ -70,7 +70,7 @@ namespace DataStructures
       {
         newArray[count++] = _data[loopIndex];
       }
-
+      //assigns new items to data and decrements length
       _data = newArray;
       _length--;
     }
@@ -97,7 +97,6 @@ namespace DataStructures
         if (t == _data[loop])
           return loop;
       }
-
       return -1;
     }
 
@@ -105,10 +104,12 @@ namespace DataStructures
     public void Copy(myArray sourceArray, int length )
     {
       var newArr = new dynamic[length];
+      //iterates through and copies all items
       for (int index = 0; index < length; index++)
       {
         newArr[index] = sourceArray.GetItem(index);
       }
+      //assigns items to data and its appropriate length
       _data = newArr;
       _length = length;
     }
