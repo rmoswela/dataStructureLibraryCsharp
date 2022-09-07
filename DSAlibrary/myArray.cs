@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-
-namespace DataStructures
+﻿namespace DataStructures
 {
   public class myArray
   {
@@ -112,6 +109,19 @@ namespace DataStructures
       //assigns items to data and its appropriate length
       _data = newArr;
       _length = length;
+    }
+
+    //method that reverses the order of all items in the array
+    public void Reverse()
+    {
+      var newArr = new dynamic[_length];
+      //iterate through all items in reverse
+      for (int index = _length - 1, count = 0; index >= 0; index--)
+      {
+        newArr[count++] = _data[index];
+      }
+      //assign items to array after reverse
+      _data = newArr;
     }
 
     //length property

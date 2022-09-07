@@ -15,6 +15,9 @@ namespace AppToRunLibrary
       arrCopy.Copy(arr, arr.Length);
       Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
       Console.WriteLine("arrCopyItem: {0}, arrCopyLength: {1}", arrCopy.GetItem(3), arrCopy.Length);
+      Console.WriteLine("arrCopyItems: {0}", PrintItemsInArray(arr));
+      arrCopy.Reverse();
+      Console.WriteLine("arrCopyReversedItems: {0}", PrintItemsInArray(arrCopy));
       arr.RemoveLastItem();
       Console.WriteLine("ArrayLength after deletion: {0}, LastItem: {1}", arr.Length,
         arr.GetItem(arr.Length - 1));
@@ -73,6 +76,18 @@ namespace AppToRunLibrary
           toPrint += "]";
       }
       return toPrint;
+    }
+
+    private static string PrintItemsInArray(myArray array)
+    {
+      string print = "[";
+      for (int index = 0; index < array.Length; index++)
+      {
+        print += " " + string.Join(",", array.GetItem(index));
+        if (index == array.Length - 1)
+          print += "]";
+      }
+      return print;
     }
 
     private static myArray AddItemsToArray(myArray inputArray)
