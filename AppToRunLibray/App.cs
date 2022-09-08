@@ -71,10 +71,9 @@ namespace AppToRunLibrary
       MyLinkedList<string> list = new MyLinkedList<string>();
       list.AddEnd("Reuben1");
       list.AddEnd("Reuben2");
+      Console.WriteLine("Element Count: {0}\n ElementData: {1}", list.Count, list.Find(x=>x.Contains("Reuben2")));
       list.Prepend("Reuben0");
-
-      Console.WriteLine("Element Count: {0}", list.Count);
-      //Console.WriteLine("Elements: {0}", list);
+      Console.WriteLine("Element Count: {0}\n ElementData: {1}", list.Count, list.Find(x => x.Contains("Reuben0")));
     }
 
     private static string PrintItemsFrom2dArray(List<int[]> array)

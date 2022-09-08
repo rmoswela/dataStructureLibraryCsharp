@@ -1,23 +1,19 @@
-﻿namespace DataStructures
+﻿using System;
+
+namespace DataStructures
 {
-  /*
-   *
-   *
-   *
-   */
   public class MyLinkedList<T>
   {
     private Node<T> _head;
     private Node<T> _tail;
     private int _length;
-    private Node<T> _node;
 
     //initializes a new instance of list that is empty (head and tail have no values)
     //and of length zero
     public MyLinkedList()
     {
-      _node = new Node<T>() { data = default, pointer = default };
-      _head = _node;
+      Node<T> node = new Node<T>() { data = default, pointer = default };
+      _head = node;
       _tail = _head;
       _length = 0;
     }
@@ -26,8 +22,8 @@
     //and of specified length
     public MyLinkedList(int capacity)
     {
-      _node = new Node<T>() { data = default, pointer = default };
-      _head = _node;
+      Node<T> node = new Node<T>() { data = default, pointer = default };
+      _head = node;
       _tail = _head;
       _length = capacity;
     }
@@ -42,14 +38,32 @@
       _length++;
     }
 
-    //Adds object to end of list
+    //Adds object or value to end of list
     public void AddEnd(T value)
     {
       //new element to add at the end of list
       Node<T> newNode = new Node<T>() { data = value, pointer = default };
       _tail.pointer = newNode;
       _tail = newNode;
+      if (_length == 0)
+        _head = _tail;
       _length++;
+    }
+
+    //searches for an element that matches he condition specified by the predicate
+    //returns the first occurance of it
+    public T Find(Predicate<T> predicate)
+    {
+      //temporary node to act as an iterator
+      Node<T> tempNode = _head;
+      for (int count = 0; count < _length; count++)
+      {
+        //check if the predicate matches, if not then move to next node
+        if (predicate(tempNode.data))
+          return tempNode.data;
+        tempNode = tempNode.pointer;
+      }
+      return default;
     }
 
     //returns the number of elements in the list
