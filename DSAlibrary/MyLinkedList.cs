@@ -32,10 +32,20 @@
       _length = capacity;
     }
 
+    //Adds object or value at the beginning of the list
+    public void Prepend(T value)
+    {
+      //new element to add at the beginning of list
+      Node<T> newNode = new Node<T>(){ data = value, pointer = default };
+      newNode.pointer = _head; //let it point to addr of head
+      _head = newNode; //then point head to addr of new node
+      _length++;
+    }
+
     //Adds object to end of list
     public void AddEnd(T value)
     {
-      //new element to add
+      //new element to add at the end of list
       Node<T> newNode = new Node<T>() { data = value, pointer = default };
       _tail.pointer = newNode;
       _tail = newNode;

@@ -71,8 +71,8 @@ namespace AppToRunLibrary
       MyLinkedList<string> list = new MyLinkedList<string>();
       list.AddEnd("Reuben1");
       list.AddEnd("Reuben2");
-      list.AddEnd("Reuben3");
-      list.AddEnd("Reuben4");
+      list.Prepend("Reuben0");
+
       Console.WriteLine("Element Count: {0}", list.Count);
       //Console.WriteLine("Elements: {0}", list);
     }
