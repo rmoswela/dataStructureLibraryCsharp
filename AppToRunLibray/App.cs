@@ -63,6 +63,14 @@ namespace AppToRunLibrary
       var arrayTwo = new int[] { 26, 134, 135, 15, 17 };
       var diff = dsa.SmallestDifference(arrayOne, arrayTwo);
       Console.WriteLine("Input: arrayOne {0} arrayTwo {1}\n output: {2}", string.Join(" , ", arrayOne), string.Join(" , ", arrayTwo), string.Join(" , ", diff));
+
+
+
+      //Linked Lists
+      MyLinkedList<int> list = new MyLinkedList<int>(10);
+      
+      Console.WriteLine("Number of Elements: {0}", list.Count);
+      //Console.WriteLine("Number of Elements: ", list);
     }
 
     private static string PrintItemsFrom2dArray(List<int[]> array)
