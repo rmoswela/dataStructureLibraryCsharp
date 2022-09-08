@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataStructures;
+using System.Linq;
 
 namespace AppToRunLibrary
 {
@@ -67,10 +68,13 @@ namespace AppToRunLibrary
 
 
       //Linked Lists
-      MyLinkedList<int> list = new MyLinkedList<int>(10);
-      
-      Console.WriteLine("Number of Elements: {0}", list.Count);
-      //Console.WriteLine("Number of Elements: ", list);
+      MyLinkedList<string> list = new MyLinkedList<string>();
+      list.AddEnd("Reuben1");
+      list.AddEnd("Reuben2");
+      list.AddEnd("Reuben3");
+      list.AddEnd("Reuben4");
+      Console.WriteLine("Element Count: {0}", list.Count);
+      //Console.WriteLine("Elements: {0}", list);
     }
 
     private static string PrintItemsFrom2dArray(List<int[]> array)

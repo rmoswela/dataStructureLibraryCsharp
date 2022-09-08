@@ -6,8 +6,8 @@
   internal class Node<T>
   {
     //value of the node
-    public T value { get; set; }
+    public T data { get; set; }
     //pointer or reference to the next node
-    public T next { get; set; }
+    public Node<T> pointer { get; set; }
   }
 }
