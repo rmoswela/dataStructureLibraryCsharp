@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataStructures;
-using System.Linq;
 
 namespace AppToRunLibrary
 {
@@ -74,6 +73,8 @@ namespace AppToRunLibrary
       Console.WriteLine("Element Count: {0}\n ElementData: {1}", list.Count, list.Find(x=>x.Contains("Reuben2")));
       list.Prepend("Reuben0");
       Console.WriteLine("Element Count: {0}\n ElementData: {1}", list.Count, list.Find(x => x.Contains("Reuben0")));
+      list.Prepend("Reuben5");
+      Console.WriteLine("MyLinkedList Items: {0}", PrintMyList(list));
     }
 
     private static string PrintItemsFrom2dArray(List<int[]> array)
@@ -110,6 +111,18 @@ namespace AppToRunLibrary
       }
 
       return inputArray;
+    }
+
+    private static string PrintMyList<T>(MyLinkedList<T> list)
+    {
+      string print = "[";
+      for (int index = 0; index < list.Count; index++)
+      {
+        print += " " + list[index];
+        if (index == list.Count - 1)
+          print += " ]";
+      }
+      return print;
     }
   }
 }

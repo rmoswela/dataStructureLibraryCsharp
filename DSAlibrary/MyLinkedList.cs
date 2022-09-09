@@ -66,10 +66,32 @@ namespace DataStructures
       return default;
     }
 
-    //returns the number of elements in the list
-    public int Count
+    //gets or sets elements at a specified index
+    public T this[int index]
     {
-      get => _length;
+      get => FindByIndex(index);
+    }
+
+    //returns the number of elements in the list
+    public int Count => _length;
+
+    //searches for an element that the specified index
+    private T FindByIndex(int index)
+    {
+      //prevent accessing index out of range
+      if (index < 0 || index >= _length)
+        throw new IndexOutOfRangeException();
+
+      //temporary node to act as an iterator
+      Node<T> tempNode = _head;
+      for (int count = 0; count < _length; count++)
+      {
+        //look for the node at the specified index
+        if (count == index)
+          break;
+        tempNode = tempNode.pointer;
+      }
+      return tempNode.data;
     }
   }
 }
