@@ -65,7 +65,6 @@ namespace DataStructuresTesting.Array
     {
       //Arrange
       _myArray = new MyArray(_list);
-
       //Act
       _myArray.AddItem(value);
       //Assert
