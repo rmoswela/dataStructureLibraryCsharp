@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using DataStructures;
+using System.Collections.Generic;
 
 namespace DataStructuresTesting.Array
 {
@@ -17,6 +18,8 @@ namespace DataStructuresTesting.Array
       new [] {'a', 'b', 'c'},
       new [] {new Person("Reuben", Gender.Male, 100), new Person("Neo", Gender.Female, 5) }
     };
+
+    private readonly List<dynamic> _list = new List<dynamic>() {"r", "e", "u", "b", "e"};
 
     [SetUp]
     public void Setup()
@@ -54,6 +57,19 @@ namespace DataStructuresTesting.Array
       _myArray.AddItem(value);
       // Assert
       Assert.AreEqual(_myArray.Length, 1);
+    }
+
+    [Test]
+    [TestCase("n")]
+    public void AddItem_AddToExistingItems_NumberOfItemsIncreaseByOne<T>(T value)
+    {
+      //Arrange
+      _myArray = new MyArray(_list);
+
+      //Act
+      _myArray.AddItem(value);
+      //Assert
+      Assert.AreEqual(_myArray.Length, 6);
     }
   }
 }
