@@ -1,4 +1,6 @@
-﻿namespace DataStructures
+﻿using System.Collections.Generic;
+
+namespace DataStructures
 {
   public class MyArray
   {
@@ -9,13 +11,20 @@
     public MyArray()
     {
       _length = 0;
-      _data = new dynamic[] { };
+      _data = new dynamic[_length];
     }
     //initializes a new instance of empty array that has specified capacity
     public MyArray(int length)
     {
       _length = length;
-      _data = new dynamic[] { };
+      _data = new dynamic[_length];
+    }
+
+    //initializes a new instance of an array with initial values
+    public MyArray(List<dynamic> data)
+    {
+      _length = data.Count;
+      _data = data.ToArray();
     }
 
     //get and set data at a specified index
