@@ -18,11 +18,12 @@
       _data = new dynamic[] { };
     }
 
-    //get data at a specified index
+    //get and set data at a specified index
     //time complexity to Access = O(1) on average and worst case
-    public dynamic GetItem(int index)
+    public dynamic this[int index]
     {
-      return _data[index];
+      get => _data[index];
+      set => _data[index] = value;
     }
 
     //add data at the end of the array
@@ -104,7 +105,7 @@
       //iterates through and copies all items
       for (int index = 0; index < length; index++)
       {
-        newArr[index] = sourceArray.GetItem(index);
+        newArr[index] = sourceArray[index];
       }
       //assigns items to data and its appropriate length
       _data = newArr;
@@ -125,9 +126,6 @@
     }
 
     //length property
-    public int Length
-    {
-      get => _length;
-    }
+    public int Length => _length;
   }
 }
