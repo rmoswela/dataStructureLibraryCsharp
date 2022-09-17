@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using DataStructures;
+using System;
 using System.Collections.Generic;
 
 namespace DataStructuresTesting.Array
@@ -8,18 +9,11 @@ namespace DataStructuresTesting.Array
   public class AddItemTests
   {
     private MyArray _myArray;
+    private static readonly TestData TestData = new TestData();
 
-    private static object[] _validValues =
-    {
-      new [] {"Reuben", "Moswela"},
-      new [] {1, 2},
-      new [] {2.5, 9.0},
-      new [] {true, false},
-      new [] {'a', 'b', 'c'},
-      new [] {new Person("Reuben", Gender.Male, 100), new Person("Neo", Gender.Female, 5) }
-    };
+    private static object[] _validValues = TestData.ValidValues;
 
-    private readonly List<dynamic> _list = new List<dynamic>() {"r", "e", "u", "b", "e"};
+    private readonly List<dynamic> _list = TestData.InitializationValues;
 
     [SetUp]
     public void Setup()
@@ -69,6 +63,26 @@ namespace DataStructuresTesting.Array
       _myArray.AddItem(value);
       //Assert
       Assert.AreEqual(_myArray.Length, 6);
+    }
+
+    [Test]
+    [TestCase('b')]
+    public void AddItem_AddItemsToArrayOfFixedLength_ReturnsAddedItems<T>(T value)
+    {
+      //Arrange
+      _myArray = new MyArray(2) {[0] = 'a', [1] = value};
+      //Assert
+      Assert.AreEqual('b', _myArray[1]);
+    }
+
+    [Test]
+    [TestCase(65536)]
+    public void AddItem_AddItemToArrayOfFixedLength_ThrowsIndexOutOfBondsException<T>(T value)
+    {
+      Assert.Throws<IndexOutOfRangeException>(() =>
+      {
+        _myArray = new MyArray(3) {[0] = 4, [1] = 16, [2] = 256, [3] = value};
+      }, "Index was outside the bounds of the array.");
     }
   }
 }
