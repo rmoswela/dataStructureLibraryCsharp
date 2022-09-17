@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructures
 {
@@ -56,6 +57,8 @@ namespace DataStructures
     //time complexity for this Deletion = 0(n) for both average and worst cases
     public void RemoveItem(int index)
     {
+      if (_length < 1)
+        throw new IndexOutOfRangeException();
       var newArray = new dynamic[_length - 1];
       for (int loopIndex = 0, count = 0; loopIndex < _length; loopIndex++)
       {
@@ -72,6 +75,8 @@ namespace DataStructures
     //time complexity for Deletion of last item = 0(n) average and worst case
     public void RemoveLastItem()
     {
+      if (_length < 1)
+        throw new IndexOutOfRangeException();
       var newArray = new dynamic[_length - 1];
       for (int loopIndex = 0, count = 0; loopIndex < _length - 1; loopIndex++)
       {
