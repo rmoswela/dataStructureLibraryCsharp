@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace DataStructuresTesting.Array
 {
   [TestFixture]
-  public class RemoveItemTests
+  public class RemoveElementTests
   {
     private MyArray _myArray;
     private static readonly TestData TestData = new TestData();
@@ -20,52 +20,52 @@ namespace DataStructuresTesting.Array
 
     [Test]
     [TestCase(1)]
-    public void RemoveItem_UsingAValidIndex_ItemsReducedByOne(int index)
+    public void RemoveElement_UsingAValidIndex_ElementsReducedByOne(int index)
     {
       //Arrange
       int beforeLength = _myArray.Length;
       //Act
-      _myArray.RemoveItem(index);
+      _myArray.RemoveElement(index);
       //Assert
       Assert.AreNotEqual(beforeLength, _myArray.Length);
     }
 
     [Test]
     [TestCase(-1)]
-    public void RemoveItem_UsingIndexThatIsOutBounds_ThrowsIndexOutOfBoundsException(int index)
+    public void RemoveElement_UsingIndexThatIsOutBounds_ThrowsIndexOutOfBoundsException(int index)
     {
       //Act and Assert
-      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveItem(index));
+      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveElement(index));
     }
 
     [Test]
     [TestCase(3)]
-    public void RemoveItem_FromAnEmptyArray_ThrowsIndexOutOfBoundsException(int index)
+    public void RemoveElement_FromAnEmptyArray_ThrowsIndexOutOfBoundsException(int index)
     {
       //Arrange
       _myArray = new MyArray(0);
       //Act and Assert
-      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveItem(index));
+      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveElement(index));
     }
 
     [Test]
-    public void RemoveLastItem_FromAnArrayWithValidItems_ItemsReducedByOne()
+    public void RemoveLastElement_FromAnArrayWithValidElements_ElementsReducedByOne()
     {
       //Arrange
       int beforeLength = _myArray.Length;
       //Act
-      _myArray.RemoveLastItem();
+      _myArray.RemoveLastElement();
       //Assert
       Assert.AreNotEqual(beforeLength, _myArray.Length);
     }
 
     [Test]
-    public void RemoveLastItem_FromAnEmptyArray_ThrowsIndexOutOfBoundsException()
+    public void RemoveLastElement_FromAnEmptyArray_ThrowsIndexOutOfBoundsException()
     {
       //Arrange
       _myArray = new MyArray(0);
       //Act and Assert
-      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveLastItem());
+      Assert.Throws<IndexOutOfRangeException>(() => _myArray.RemoveLastElement());
     }
   }
 }

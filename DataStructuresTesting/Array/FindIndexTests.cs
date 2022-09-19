@@ -18,72 +18,72 @@ namespace DataStructuresTesting.Array
     }
 
     /*
-     * First Occurrence Of Items
+     * First Occurrence Of Elements
      */
 
     [Test]
     [TestCase("e")]
-    public void FindIndexItemFirstOccurrence_FromArrayWithValidItems_ReturnsIndexWhereItemFirstOccurred<T>(T item)
+    public void FindIndexElementFirstOccurrence_FromArrayWithValidElements_ReturnsIndexWhereElementFirstOccurred<T>(T element)
     {
       //Act
-      int indexFirstOccurrenceOfItem = _myArray.FindIndexItemFirstOccurrence(item);
+      int indexFirstOccurrenceOfElement = _myArray.FindIndexOfElementFirstOccurrence(element);
       //Assert
-      Assert.AreEqual(indexFirstOccurrenceOfItem, 1);
+      Assert.AreEqual(indexFirstOccurrenceOfElement, 1);
     }
 
     [Test]
     [TestCase("x")]
-    public void FindIndexItemFirstOccurrence_FromArrayWithoutItem_ReturnsNegativeOne<T>(T item)
+    public void FindIndexElementFirstOccurrence_FromArrayWithoutElement_ReturnsNegativeOne<T>(T element)
     {
       //Act
-      int returnTypeWhenNoItemFound = _myArray.FindIndexItemFirstOccurrence(item);
+      int returnTypeWhenNoElementFound = _myArray.FindIndexOfElementFirstOccurrence(element);
       //Assert
-      Assert.AreEqual(-1, returnTypeWhenNoItemFound);
+      Assert.AreEqual(-1, returnTypeWhenNoElementFound);
     }
 
     [Test]
     [TestCase("r")]
-    public void FindIndexItemFirstOccurrence_FromEmptyArray_ReturnsNegativeOne<T>(T item)
+    public void FindIndexElementFirstOccurrence_FromEmptyArray_ReturnsNegativeOne<T>(T element)
     {
       //Arrange
       _myArray = new MyArray(0);
       //Act
-      int returnTypeWhenArrayIsEmpty = _myArray.FindIndexItemFirstOccurrence(item);
+      int returnTypeWhenArrayIsEmpty = _myArray.FindIndexOfElementLastOccurrence(element);
       //Assert
       Assert.AreEqual(-1, returnTypeWhenArrayIsEmpty);
     }
 
     /*
-     * Last Occurrence Of Items
+     * Last Occurrence Of Elements
      */
     [Test]
     [TestCase("e")]
-    public void FindIndexItemLastOccurrence_FromArrayWithValidItems_ReturnsIndexWhereItemLastOccurred<T>(T item)
+    public void FindIndexElementLastOccurrence_FromArrayWithValidElements_ReturnsIndexWhereElementLastOccurred<T>(T element)
     {
       //Act
-      int indexLastOccurrenceOfItem = _myArray.FindIndexItemLastOccurrence(item);
+      int indexLastOccurrenceOfElement = _myArray.FindIndexOfElementLastOccurrence(element);
       //Assert
-      Assert.AreEqual(indexLastOccurrenceOfItem, 4);
+      Assert.AreEqual(indexLastOccurrenceOfElement, 4);
     }
 
     [Test]
     [TestCase("z")]
-    public void FindIndexItemLastOccurrence_FromArrayWithoutItem_ReturnsNegativeOne<T>(T item)
+    public void FindIndexElementLastOccurrence_FromArrayWithoutElement_ReturnsNegativeOne<T>(T element)
     {
       //Act
-      int returnTypeWhenNoItemFound = _myArray.FindIndexItemLastOccurrence(item);
+      int returnTypeWhenNoElementFound = _myArray.FindIndexOfElementLastOccurrence(element);
       //Assert
-      Assert.AreEqual(-1, returnTypeWhenNoItemFound);
+      Assert.AreEqual(-1, returnTypeWhenNoElementFound);
     }
 
     [Test]
     [TestCase("u")]
-    public void FindIndexItemLastOccurrence_FromEmptyArray_ReturnsNegativeOne<T>(T item)
+    public void FindIndexElementLastOccurrence_FromEmptyArray_ReturnsNegativeOne<T>(T element)
     {
       //Arrange
       _myArray = new MyArray(0);
       //Act
-      int returnTypeWhenArrayIsEmpty = _myArray.FindIndexItemLastOccurrence(item);
+      int returnTypeWhenArrayIsEmpty = _myArray.FindIndexOfElementLastOccurrence(element);
       //Assert
       Assert.AreEqual(-1, returnTypeWhenArrayIsEmpty);
     }

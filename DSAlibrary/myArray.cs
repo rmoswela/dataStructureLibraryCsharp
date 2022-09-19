@@ -38,24 +38,24 @@ namespace DataStructures
 
     //add data at the end of the array
     //time complexity for Insertion = O(n) on average and worst case
-    public void AddItem<T>(T t)
+    public void AddElement<T>(T t)
     {
       var count = 0;
       var newArray = new dynamic[_length + 1];
-      //iterates to end of array then increments by 1 to allow for new item
+      //iterates to end of array then increments by 1 to allow for new element
       for (var loopIndex = 0; loopIndex < _length; loopIndex++)
       {
         newArray[count++] = _data[loopIndex];
       }
-      //assigns items to data and increments length
+      //assigns elements to data and increments length
       newArray[count] = t;
       _data = newArray;
       _length++;
     }
 
-    //removes item at the specified index
+    //removes element at the specified index
     //time complexity for this Deletion = 0(n) for both average and worst cases
-    public void RemoveItem(int index)
+    public void RemoveElement(int index)
     {
       if (_length < 1)
         throw new IndexOutOfRangeException();
@@ -71,9 +71,9 @@ namespace DataStructures
       _length--;
     }
 
-    //removes last item in the array
-    //time complexity for Deletion of last item = 0(n) average and worst case
-    public void RemoveLastItem()
+    //removes last element in the array
+    //time complexity for Deletion of last element = 0(n) average and worst case
+    public void RemoveLastElement()
     {
       if (_length < 1)
         throw new IndexOutOfRangeException();
@@ -82,15 +82,15 @@ namespace DataStructures
       {
         newArray[count++] = _data[loopIndex];
       }
-      //assigns new items to data and decrements length
+      //assigns new element to data and decrements length
       _data = newArray;
       _length--;
     }
 
 
-    //finds an index where the item first occurs
+    //finds an index where the element first occurs
     //time complexity for Search = 0(n) average and worst case
-    public int FindIndexItemFirstOccurrence<T>(T t)
+    public int FindIndexOfElementFirstOccurrence<T>(T t)
     {
       for (var loop = 0; loop < _length; loop++)
       {
@@ -100,9 +100,9 @@ namespace DataStructures
       return -1;
     }
 
-    //finds and returns index of items' last occurance
+    //finds and returns index of elements' last occurrence
     //time complexity for Search = 0(n) average and worst case
-    public int FindIndexItemLastOccurrence<T>(T t)
+    public int FindIndexOfElementLastOccurrence<T>(T t)
     {
       for (int loop = _length - 1; loop >= 0; loop--)
       {
@@ -124,27 +124,27 @@ namespace DataStructures
       var newArr = new dynamic[length];
       if (length > sourceArray.Length || length > newArr.Length)
         throw new ArgumentException();
-      //iterates through and copies all items
+      //iterates through and copies all elements
       for (int index = 0; index < length; index++)
       {
         newArr[index] = sourceArray[index];
       }
-      //assigns items to data and its appropriate length
+      //assigns elements to data and its appropriate length
       _data = newArr;
       _length = length;
     }
 
-    //method that reverses the order of all items in the array
+    //method that reverses the order of all elements in the array
     //time complexity and space complexity is 0(n)
     public void Reverse()
     {
       var newArr = new dynamic[_length];
-      //iterate through all items in reverse
+      //iterate through all elements in reverse
       for (int index = _length - 1, count = 0; index >= 0; index--)
       {
         newArr[count++] = _data[index];
       }
-      //assign items to array after reverse
+      //assign elements to array after reverse
       _data = newArr;
     }
 
