@@ -90,7 +90,7 @@ namespace DataStructures
 
     //finds an index where the item first occurs
     //time complexity for Search = 0(n) average and worst case
-    public int FindIndexItemFirstOccurance<T>(T t)
+    public int FindIndexItemFirstOccurrence<T>(T t)
     {
       for (var loop = 0; loop < _length; loop++)
       {
@@ -102,7 +102,7 @@ namespace DataStructures
 
     //finds and returns index of items' last occurance
     //time complexity for Search = 0(n) average and worst case
-    public int FindIndexItemLastOccurance<T>(T t)
+    public int FindIndexItemLastOccurrence<T>(T t)
     {
       for (int loop = _length - 1; loop >= 0; loop--)
       {
@@ -112,10 +112,18 @@ namespace DataStructures
       return -1;
     }
 
-    //Copy elements from source array to this one
-    public void Copy(MyArray sourceArray, int length )
+    //Copy elements from source array
+    //time complexity and space complexity is 0(n)
+    public void Copy(MyArray sourceArray, int length)
     {
+      if (sourceArray == null)
+        throw new ArgumentNullException();
+      if (length < 0)
+        throw new ArgumentOutOfRangeException();
+
       var newArr = new dynamic[length];
+      if (length > sourceArray.Length || length > newArr.Length)
+        throw new ArgumentException();
       //iterates through and copies all items
       for (int index = 0; index < length; index++)
       {
@@ -127,6 +135,7 @@ namespace DataStructures
     }
 
     //method that reverses the order of all items in the array
+    //time complexity and space complexity is 0(n)
     public void Reverse()
     {
       var newArr = new dynamic[_length];
