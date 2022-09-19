@@ -150,5 +150,37 @@ namespace DataStructures
 
     //length property
     public int Length => _length;
+
+    /*
+     * Override the Equals method in order to better compare instances of this class
+     */
+    public override bool Equals(object obj)
+    {
+      MyArray arrayObject = (MyArray)obj;
+
+      if (arrayObject == null || _length != arrayObject.Length)
+      {
+        return false;
+      }
+
+      for (int index = 0; index < _length; index++)
+      {
+        if (arrayObject[index] != _data[index])
+          return false;
+      }
+      return true;
+    }
+
+    /*
+     * This is to generate the same hashcode for instantiations of this class
+     * So that when you use instances of this class as keys in data structures that don't allow duplicate keys like dictionaries, hashset etc
+     * to group them into buckets
+     * https://learn.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netframework-4.8#remarks
+     * https://stackoverflow.com/q/371328/4782963
+     */
+    public override int GetHashCode()
+    {
+      return Length.GetHashCode();
+    }
   }
 }
