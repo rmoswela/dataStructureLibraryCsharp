@@ -156,16 +156,14 @@ namespace DataStructures
      */
     public override bool Equals(object obj)
     {
-      MyArray arrayObject = (MyArray)obj;
-
-      if (arrayObject == null || _length != arrayObject.Length)
+      if ((MyArray)obj == null || _length != ((MyArray)obj).Length)
       {
         return false;
       }
 
       for (int index = 0; index < _length; index++)
       {
-        if (arrayObject[index] != _data[index])
+        if (((MyArray)(obj))[index] != _data[index])
           return false;
       }
       return true;
@@ -180,7 +178,7 @@ namespace DataStructures
      */
     public override int GetHashCode()
     {
-      return Length.GetHashCode();
+      return base.GetHashCode();
     }
   }
 }
