@@ -6,7 +6,8 @@ namespace DataStructuresTesting.LinkedList
   [TestFixture]
   public class AddEndTests
   {
-    private readonly Person _testPerson = new Person("Reu", Gender.Male, 10);
+    private static readonly TestData TestData = new TestData();
+    private static object[] _testValues = TestData.ValidValues;
 
     [Test]
     [TestCase(2022)]
@@ -22,11 +23,7 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
-    [TestCase(2022)]
-    [TestCase("Reu")]
-    [TestCase(2.5)]
-    [TestCase(nameof(_testPerson))]
-    [TestCase(true)]
+    [TestCaseSource(nameof(_testValues))]
     public void AddEnd_AddsElementToAlreadyPopulatedList_ReturnsIncreasedNumberOfElementsByOne<T>(T value)
     {
       //Arrange
