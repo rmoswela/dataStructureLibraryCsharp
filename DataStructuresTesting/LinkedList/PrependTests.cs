@@ -11,7 +11,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase(false)]
-    public void Prepend_AddsElementToAnEmptyList_ReturnsTheAddedValue<T>(T value)
+    public void Prepend_ElementToAnEmptyList_ReturnsTheAddedValue<T>(T value)
     {
       //Arrange
       MyLinkedList<T> myLinkedList = new MyLinkedList<T>();
@@ -24,7 +24,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCaseSource(nameof(_testValues))]
-    public void AddEnd_AddsElementToAlreadyPopulatedList_ReturnsIncreasedNumberOfElementsByOne<T>(T value)
+    public void Prepend_ElementToAlreadyPopulatedList_ReturnsIncreasedNumberOfElementsByOne<T>(T value)
     {
       //Arrange
       MyLinkedList<T> myLinkedList = new MyLinkedList<T>(5);
@@ -32,6 +32,17 @@ namespace DataStructuresTesting.LinkedList
       myLinkedList.Prepend(value);
       //Assert
       Assert.AreEqual(6, myLinkedList.Count);
+    }
+
+    [Test]
+    public void Prepend_NullValueToEmptyList_ReturnsIncreasedNumberOfElementsByOne()
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>();
+      //Act
+      myLinkedList.Prepend(null);
+      //Assert
+      Assert.AreEqual(1, myLinkedList.Count);
     }
   }
 }
