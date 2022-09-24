@@ -12,7 +12,6 @@ namespace DataStructures
     //and of length zero
     public MyLinkedList()
     {
-      //Node<T> node = new Node<T>() { Data = default, Pointer = default };
       _head = null;
       _tail = _head;
       _length = 0;
@@ -38,29 +37,31 @@ namespace DataStructures
 
     //Adds objects or values to end of list
     //nulls allowed for ref types
+    //time complexity is 0(1) and space complexity is 0(1)
     public void AddEnd(T value)
     {
       //new element to add at the end of list
       Node<T> newNode = new Node<T>() { Data = value, Pointer = default };
       _tail = newNode;
-      _tail.Pointer = null;
       if (_length == 0)
         _head = _tail;
       _length++;
     }
 
     //Adds object or values at the beginning of the list
+    //time complexity is 0(1) and space complexity is 0(1)
     public void Prepend(T value)
     {
       //new element to add at the beginning of list
       Node<T> newNode = new Node<T>(){ Data = value, Pointer = default };
-      newNode.Pointer = _head; //let it point to addr of head
-      _head = newNode; //then point head to addr of new node
+      newNode.Pointer = _head; //let it point to address of head
+      _head = newNode; //then point head to address of new node
       _length++;
     }
 
     //searches for an element that matches he condition specified by the predicate
-    //returns the first occurance of it
+    //returns the first occurrence of it
+    //time complexity is 0(n) and space complexity is 0(1)
     public T Find(Predicate<T> predicate)
     {
       //temporary node to act as an iterator
@@ -97,7 +98,8 @@ namespace DataStructures
       }
     }
 
-    //searches for an element that the specified index
+    //searches for an element that the specified index - get property
+    //time complexity is 0(n) and space complexity is 0(1)
     private T FindByIndex(int index)
     {
       //prevent accessing index out of range
