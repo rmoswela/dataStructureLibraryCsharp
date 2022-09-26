@@ -86,22 +86,23 @@ namespace DataStructures
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
+      Node<T> tempNode = null;
       for (int count = 0; count < capacity; count++)
       {
         Node<T> newNode = new Node<T>();
-        if (count == 0)
+        if (tempNode == null)
         {
           _head = newNode;
-          _head.Pointer = newNode;
+          tempNode = newNode;
         }
-        newNode.Pointer = newNode;
-        if (count == capacity - 1)
+        else
         {
-          _tail = newNode;
-          _tail.Pointer = null;
+          tempNode.Pointer = newNode;
+          tempNode = newNode;
         }
-        _length++;
       }
+      _tail = tempNode;
+      _length = capacity;
     }
 
     //creates element from the provided enumerable data structure
