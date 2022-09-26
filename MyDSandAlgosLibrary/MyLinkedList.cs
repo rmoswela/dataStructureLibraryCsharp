@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructures
 {
@@ -23,6 +24,12 @@ namespace DataStructures
     {
       CreateEmptyElements(capacity);
       _length = capacity;
+    }
+
+    //initializes a new instance of list class with elements copied from the specified enumerable
+    public MyLinkedList(IEnumerable<T> enumerable)
+    {
+      InitializesListWithElements(enumerable);
     }
 
     //returns the number of elements in the list
@@ -91,11 +98,37 @@ namespace DataStructures
         if (count == capacity - 1)
         {
           _tail = newNode;
-          newNode.Pointer = null;
           _tail.Pointer = null;
         }
         _length++;
       }
+    }
+
+    //creates element from the provided enumerable data structure
+    private void InitializesListWithElements(IEnumerable<T> enumerable)
+    {
+      if (enumerable == null)
+        throw new ArgumentNullException();
+
+      using IEnumerator<T> iterator = enumerable.GetEnumerator();
+      int count = 0;
+      Node<T> tempNode = null;
+      while (iterator.MoveNext())
+      {
+        Node<T> node = new Node<T>(iterator.Current);
+        if (tempNode == null)
+        {
+          _head = node;
+          tempNode = node;
+        }
+        else
+        {
+          tempNode.Pointer = node;
+          tempNode = node;
+        }
+        count++;
+      }
+      _length = count;
     }
 
     //searches for an element that the specified index - get property
