@@ -78,7 +78,10 @@ namespace DataStructures
 
     //searches for an element that matches he condition specified by the predicate
     //returns the first occurrence of it
-    //time complexity is 0(n) and space complexity is 0(1)
+    //time complexity for search is linear that is 0(n) and space complexity is constant 0(1)
+    //Predicate<T> is a delegate to a method that returns true if object passed matches conditions defined in the delegate
+    //elements of the current List<T> are individually passed to the Predicate<T> delegate
+    //Processing is stopped when a match is found
     public T Find(Predicate<T> predicate)
     {
       if (predicate is null)

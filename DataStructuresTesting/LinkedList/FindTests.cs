@@ -25,7 +25,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase("SeeSharp")]
-    public void Find_AnElementThatDoesNotMatchesConditionDefinedByPredicate_ReturnDefaultValueForString(string value)
+    public void Find_AStringElementThatDoesNotMatchesConditionDefinedByPredicate_ReturnDefaultValueForString(string value)
     {
       //Arrange
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
@@ -37,7 +37,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase(15)]
-    public void Find_AnElementThatDoesNotMatchesConditionDefinedByPredicate_ReturnDefaultValueForInt(int value)
+    public void Find_AnIntElementThatDoesNotMatchesConditionDefinedByPredicate_ReturnDefaultValueForInt(int value)
     {
       //Arrange
       IEnumerable<int> primeNumbers = new[] {2, 3, 5, 7, 11, 17, 19, 23};
