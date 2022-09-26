@@ -128,6 +128,7 @@ namespace DataStructures
         }
         count++;
       }
+      _tail = tempNode;
       _length = count;
     }
 
