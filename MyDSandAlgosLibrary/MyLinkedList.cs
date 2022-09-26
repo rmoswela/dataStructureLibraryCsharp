@@ -50,18 +50,18 @@ namespace DataStructures
     {
       //new element to add at the end of list
       Node<T> newNode = new Node<T>() { Data = value, Pointer = default };
+      //when tail is null, the assumption is the list is new
+      //hence head and tail pointing to same reference
       if (_tail is null)
       {
         _tail = newNode;
+        _head = _tail;
       }
       else
       {
         _tail.Pointer = newNode;
         _tail = newNode;
       }
-
-      if (_length == 0)
-        _head = _tail;
       _length++;
     }
 
@@ -72,7 +72,7 @@ namespace DataStructures
       //new element to add at the beginning of list
       Node<T> newNode = new Node<T>(){ Data = value, Pointer = default };
       newNode.Pointer = _head; //let it point to address of head
-      _head = newNode; //then point head to address of new node
+      _head = newNode; //then move head pointer to address of new node
       _length++;
     }
 
@@ -105,6 +105,8 @@ namespace DataStructures
       for (int count = 0; count < capacity; count++)
       {
         Node<T> newNode = new Node<T>();
+        //when temp node is null we know its the start of the new list
+        //therefore point head to that reference
         if (tempNode is null)
         {
           _head = newNode;
@@ -116,6 +118,7 @@ namespace DataStructures
           tempNode = newNode;
         }
       }
+      //point tail to reference of last node added
       _tail = tempNode;
       _length = capacity;
     }
@@ -132,7 +135,9 @@ namespace DataStructures
       while (iterator.MoveNext())
       {
         Node<T> node = new Node<T>(iterator.Current);
-        if (tempNode == null)
+        //when temp node is null we know its the start of the new list
+        //therefore point head to that reference
+        if (tempNode is null)
         {
           _head = node;
           tempNode = node;
@@ -144,6 +149,7 @@ namespace DataStructures
         }
         count++;
       }
+      //point tail to reference of last node added
       _tail = tempNode;
       _length = count;
     }
