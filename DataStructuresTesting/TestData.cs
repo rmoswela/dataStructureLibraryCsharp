@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructuresTesting
 {
@@ -15,5 +16,7 @@ namespace DataStructuresTesting
     };
 
     public List<dynamic> InitializationValues { get; } = new List<dynamic>() { "r", "e", "u", "b", "e" };
-  }
+
+    public IEnumerable<string> EnumerableTestValues = new[] { "Reuben", "Neo", "Lame", "Moswela", "Lame", "Meleko" };
+}
 }
