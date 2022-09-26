@@ -49,7 +49,16 @@ namespace DataStructures
     {
       //new element to add at the end of list
       Node<T> newNode = new Node<T>() { Data = value, Pointer = default };
-      _tail = newNode;
+      if (_tail == null)
+      {
+        _tail = newNode;
+      }
+      else
+      {
+        _tail.Pointer = newNode;
+        _tail = newNode;
+      }
+
       if (_length == 0)
         _head = _tail;
       _length++;
