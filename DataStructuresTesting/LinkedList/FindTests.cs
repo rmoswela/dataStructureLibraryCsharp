@@ -34,5 +34,15 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.AreEqual(value, results);
     }
+
+    [Test]
+    [TestCase(null)]
+    public void Find_ElementThatMatchesNullConditionDefinedByPredicate_ThrowsArgumentNullException(string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      //Act and Assert
+      Assert.Throws<ArgumentNullException>(() => myLinkedList.Find(x => x.Contains(value)));
+    }
   }
 }
