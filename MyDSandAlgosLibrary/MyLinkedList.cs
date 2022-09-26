@@ -27,6 +27,7 @@ namespace DataStructures
     }
 
     //initializes a new instance of list class with elements copied from the specified enumerable
+    //This constructor is an (0)n operation for both time and space complexity
     public MyLinkedList(IEnumerable<T> enumerable)
     {
       InitializesListWithElements(enumerable);
@@ -49,7 +50,7 @@ namespace DataStructures
     {
       //new element to add at the end of list
       Node<T> newNode = new Node<T>() { Data = value, Pointer = default };
-      if (_tail == null)
+      if (_tail is null)
       {
         _tail = newNode;
       }
@@ -80,6 +81,8 @@ namespace DataStructures
     //time complexity is 0(n) and space complexity is 0(1)
     public T Find(Predicate<T> predicate)
     {
+      if (predicate is null)
+        throw new ArgumentNullException();
       //temporary node to act as an iterator
       Node<T> tempNode = _head;
       for (int count = 0; count < _length; count++)
@@ -99,7 +102,7 @@ namespace DataStructures
       for (int count = 0; count < capacity; count++)
       {
         Node<T> newNode = new Node<T>();
-        if (tempNode == null)
+        if (tempNode is null)
         {
           _head = newNode;
           tempNode = newNode;
@@ -117,7 +120,7 @@ namespace DataStructures
     //creates element from the provided enumerable data structure
     private void InitializesListWithElements(IEnumerable<T> enumerable)
     {
-      if (enumerable == null)
+      if (enumerable is null)
         throw new ArgumentNullException();
 
       using IEnumerator<T> iterator = enumerable.GetEnumerator();
