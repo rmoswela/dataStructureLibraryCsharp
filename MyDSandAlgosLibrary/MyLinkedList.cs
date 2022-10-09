@@ -135,6 +135,25 @@ namespace DataStructures
       _length++;
     }
 
+    //Determines whether the List contains elements that match the conditions
+    //defined by the specified predicate
+    //This is a linear search therefore Time Complexity is 0(n)
+    //Space Complexity is 0(1) - Constant Operation
+    public bool Exists(Predicate<T> predicate) 
+    {
+      if (predicate is null)
+        throw new ArgumentNullException();
+
+      Node<T> tempNode = _head;
+      for (int count = 0; count < _length; count++)
+      {
+        if (predicate(tempNode.Data))
+          return true;
+        tempNode = tempNode.Pointer;
+      }
+      return false;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
