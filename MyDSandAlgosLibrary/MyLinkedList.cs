@@ -154,6 +154,22 @@ namespace DataStructures
       return false;
     }
 
+    //Determines whether an element is in the List
+    //The value can be null for ref types
+    //This method determines equality by using the default equality comparer
+    //Linear search operation, Time Complexity is 0(n) where n is Count
+    public bool Contains(T value)
+    {
+      Node<T> tempNode = _head;
+      for (int count = 0; count < _length; count++)
+      {
+        if (tempNode.Data.Equals(value))
+          return true;
+        tempNode = tempNode.Pointer;
+      }
+      return false;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
