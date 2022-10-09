@@ -1,5 +1,6 @@
 ﻿using DataStructures;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace DataStructuresTesting.LinkedList
@@ -33,6 +34,17 @@ namespace DataStructuresTesting.LinkedList
       myLinkedList.Insert(index, value);
       //Assert
       Assert.AreEqual("Neoh", myLinkedList.Find(x => x == value));
+    }
+
+    [Test]
+    [TestCase(-1, "failure")]
+    [TestCase(100, "Another failure")]
+    public void Insert_AddsValuesAtOutOfRangeIndexes_ThrowsArgumentOutOfRangeException(int index, string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      //Act and Assert
+      Assert.Throws<ArgumentOutOfRangeException>(() => myLinkedList.Insert(index, value));
     }
   }
 }
