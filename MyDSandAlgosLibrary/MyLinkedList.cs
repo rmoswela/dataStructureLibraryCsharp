@@ -98,6 +98,43 @@ namespace DataStructures
       return default;
     }
 
+    //Inserts an element into the list at the specified index
+    //if index is equal 0 is added at the beginning
+    //if index equals length of list, element is added at the end
+    //Time complexity is 0(n) where n is equal to count
+    public void Insert(int index, T value)
+    {
+      if (index < 0 || index > _length)
+        throw new ArgumentOutOfRangeException();
+
+      if (index == 0)
+      {
+        Prepend(value);
+        return;
+      }
+
+      if (index == _length)
+      {
+        AddEnd(value);
+        return;
+      }
+
+      int count = 1;
+      Node<T> newNode = new Node<T> { Data = value, Pointer = default };
+      Node<T> tempNode = _head;
+      //iterate to the index you are looking to insert at
+      while (count < index)
+      {
+        tempNode = tempNode.Pointer;
+        count++;
+      }
+      //connect new node to where temp is pointing 
+      //before pointing temp to new node
+      newNode.Pointer = tempNode.Pointer;
+      tempNode.Pointer = newNode;
+      _length++;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
