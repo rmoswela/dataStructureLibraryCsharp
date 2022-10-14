@@ -192,6 +192,40 @@ namespace DataStructures
       _head = previousNode;
     }
 
+    //Removes the first occurrence of a specific object from the list
+    //Linear search operation, Time Complexity is 0(n) where n is Count
+    public bool Remove(T value) 
+    {
+      //checks for value in the first node
+      //since we don't have previous node
+      if (_head.Data.Equals(value))
+      {
+        _head = _head.Pointer;
+        _length--;
+        return true;
+      }
+
+      Node<T> currentNode = _head;
+      Node<T> previousNode = null;
+      //iterates through list keeping track of prev and curr
+      while (currentNode != null)
+      {
+        if (currentNode.Data.Equals(value))
+        {
+          //where value is found in curr
+          //point prev node to node after curr or null
+          //decrement length of list
+          previousNode.Pointer = currentNode.Pointer;
+          currentNode = previousNode;
+          _length--;
+          return true;
+        }
+        previousNode = currentNode;
+        currentNode = currentNode.Pointer;
+      }
+      return false;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
