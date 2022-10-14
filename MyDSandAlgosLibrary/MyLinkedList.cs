@@ -170,6 +170,28 @@ namespace DataStructures
       return false;
     }
 
+    //Reverses the order of the elements in the entire list
+    //Time complexity is Linear operation O(n), where n is Count
+    //Space complexity is constant O(1)
+    public void Reverse()
+    {
+      _tail = _head;
+      Node<T> currentNode = _head;
+      Node<T> previousNode = null;
+      Node<T> nextNode = null;
+      //iterate while keeping track of curr, prev and next node
+      while (currentNode != null)
+      {
+        //connect current node with previous before
+        //updating previous node to current and current to next
+        nextNode = currentNode.Pointer;
+        currentNode.Pointer = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+      }
+      _head = previousNode;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
