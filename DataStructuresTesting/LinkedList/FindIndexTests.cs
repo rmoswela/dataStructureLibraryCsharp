@@ -20,5 +20,17 @@ namespace DataStructuresTesting.LinkedList
       //Act and Assert
       Assert.Throws<ArgumentNullException>(() => myLinkedList.FindIndex(predicate));
     }
+
+    [Test]
+    public void FindIndex_OfValidPredicate_ReturnIndexOfElementThatMatchesPredicate()
+    {
+      //Arrange
+      var value = "Neo";
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      //Act
+      var index = myLinkedList.FindIndex(x => x == value);
+      //Assert
+      Assert.IsTrue(myLinkedList[index] == value);
+    }
   }
 }
