@@ -38,10 +38,24 @@ namespace DataStructures
 
     //gets or sets elements at a specified index
     //accepts null as valid value for ref types and allows duplicates
+    //Time and Space complexity is constant = O(1)
     public T this[int index]
     {
-      get => FindByIndex(index);
-      set => Insert(index, value);
+      get 
+      {
+        if (index < 0 || index >= _length)
+          throw new ArgumentOutOfRangeException("index");
+
+        return FindByIndex(index); 
+      }
+      set 
+      {
+        if (index < 0 || index >= _length)
+          throw new ArgumentOutOfRangeException("index");
+
+        Insert(index, value);
+        return;
+      }
     }
 
     //Adds objects or values to end of list
