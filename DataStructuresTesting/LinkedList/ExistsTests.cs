@@ -30,5 +30,18 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.IsFalse(result);
     }
+
+    [Test]
+    [TestCase('e')]
+    public void Exists_ConditionThatMatchesOneOrMoreElements_ReturnTrue(char value)
+    {
+      //Arrange
+      Predicate<char> predicate = x => x == value;
+      MyLinkedList<char> myLinkedList = new MyLinkedList<char>(TestData.charList);
+      //Act
+      var result = myLinkedList.Exists(predicate);
+      //Assert
+      Assert.IsTrue(result);
+    }
   }
 }
