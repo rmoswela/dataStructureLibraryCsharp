@@ -98,6 +98,33 @@ namespace DataStructures
       return default;
     }
 
+    //Searches for element that matches conditions defined by specified predicate
+    //returns index of the first occurrence within the entire list or -1 if not found
+    //Time complexity is linear = O(n) where n is Count
+    //Space complexity is constant = O(1)
+    public int FindIndex(Predicate<T> predicate)
+    {
+      if (predicate is null)
+        throw new ArgumentNullException();
+
+      int index = 0;
+      Node<T> tempNode = _head;
+
+      //iterate the entire list
+      while(tempNode != null)
+      {
+        //where predicate condition is met return index
+        if (predicate(tempNode.Data))
+        {
+          return index;
+        }
+        index++;
+        tempNode = tempNode.Pointer;
+      }
+
+      return -1;
+    }
+
     //Inserts an element into the list at the specified index
     //if index is equal 0 is added at the beginning
     //if index equals length of list, element is added at the end
