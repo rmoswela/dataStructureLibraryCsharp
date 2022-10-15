@@ -58,5 +58,18 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.AreEqual(index, myLinkedList.FindIndex(x => x == value));
     }
+
+    [Test]
+    [TestCase(0, 'R')]
+    public void Insert_ValidValueAtTheBeginningOfList_ReturnsTheFirstIndexOfList(int index, char value)
+    {
+      //Arrange
+      IEnumerable<char> charList = new[] { 'e', 'u', 'b', 'e', 'n' };
+      MyLinkedList<char> myLinkedList = new MyLinkedList<char>(charList);
+      //Act
+      myLinkedList.Insert(index, value);
+      //Assert
+      Assert.AreEqual(index, myLinkedList.FindIndex(x => x == value));
+    }
   }
 }
