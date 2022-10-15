@@ -13,7 +13,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase(4, 11)]
-    public void Insert_ValidIntValue_ReturnsTheAddedValue(int index, int value)
+    public void Insert_ValidIntValue_ReturnsIndexWhereTheElementIsAdded(int index, int value)
     {
       //Arrange
       IEnumerable<int> primeNumbers = new[] { 2, 3, 5, 7, 17, 19, 23 };
@@ -21,19 +21,19 @@ namespace DataStructuresTesting.LinkedList
       //Act
       myLinkedList.Insert(index, value);
       //Assert
-      Assert.AreEqual(11, myLinkedList.Find(x => x == value));
+      Assert.AreEqual(index, myLinkedList.FindIndex(x => x == value));
     }
 
     [Test]
     [TestCase(3, "Neoh")]
-    public void Insert_ValidStringValue_ReturnsTheAddedValue(int index, string value)
+    public void Insert_ValidStringValue_ReturnsIndexWhereTheElementIsAdded(int index, string value)
     {
       //Arrange
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
       //Act
       myLinkedList.Insert(index, value);
       //Assert
-      Assert.AreEqual("Neoh", myLinkedList.Find(x => x == value));
+      Assert.AreEqual(index, myLinkedList.FindIndex(x => x == value));
     }
 
     [Test]
@@ -45,6 +45,18 @@ namespace DataStructuresTesting.LinkedList
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
       //Act and Assert
       Assert.Throws<ArgumentOutOfRangeException>(() => myLinkedList.Insert(index, value));
+    }
+
+    [Test]
+    [TestCase(2, null)]
+    public void Insert_NullValue_ReturnsIndexWhereTheElementIsAdded(int index, string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      //Act
+      myLinkedList.Insert(index, value);
+      //Assert
+      Assert.AreEqual(index, myLinkedList.FindIndex(x => x == value));
     }
   }
 }
