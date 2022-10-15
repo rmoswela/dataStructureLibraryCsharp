@@ -16,7 +16,7 @@ namespace DataStructuresTesting
     };
 
     public List<dynamic> InitializationValues { get; } = new List<dynamic>() { "r", "e", "u", "b", "e" };
-    public IEnumerable<string> EnumerableTestValues = new[] { "Reuben", "Neo", "Lame", "Moswela", "Lame", "Meleko" };
+    public IEnumerable<string> EnumerableTestValues = new[] { "Reuben", "Neo", "Lame", "Moswela", null, "Lame", "Meleko" };
     public IEnumerable<int> primeNumbers = new[] { 2, 3, 5, 7, 17, 19, 23 };
     public IEnumerable<char> charList = new[] { 'R', 'e', 'u', 'b', 'e', 'n' };
     public IEnumerable<double> squaredDoubles = new[] { 0.90, 0.81, 0.66, 0.44, 0.19 };
