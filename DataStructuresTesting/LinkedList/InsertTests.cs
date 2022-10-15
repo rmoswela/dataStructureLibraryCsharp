@@ -73,14 +73,14 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
-    [TestCase(5, 0.04)]
-    public void Insert_ValidValueAtTheEndOfList_ReturnsTheLastIndexOfList(int index, double value)
+    public void Insert_ValidValueAtTheEndOfList_ReturnsTheLastIndexOfList()
     {
       //Arrange
+      double value = 0.04;
       IEnumerable<double> squaredDoubles = new[] { 0.90, 0.81, 0.66, 0.44, 0.19 };
       MyLinkedList<double> myLinkedList = new MyLinkedList<double>(squaredDoubles);
       //Act
-      myLinkedList.Insert(index, value);
+      myLinkedList.Insert(myLinkedList.Count, value);
       //Assert
       Assert.AreEqual(myLinkedList.Count -1, myLinkedList.FindIndex(x => x == value));
     }
