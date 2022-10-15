@@ -258,6 +258,45 @@ namespace DataStructures
       return;
     }
 
+    //Removes all elements that matches conditions defined by specified predicate
+    //returns the number of elements removed from list
+    //Time Complexity is linear O(n) where is n is Count
+    public int RemoveAll(Predicate<T> predicate)
+    {
+      if (predicate is null)
+        throw new ArgumentNullException("match");
+
+      Node<T> currentNode = _head;
+      Node<T> previousNode = null;
+      int count = 0;
+
+      //iterate the list keeping track of curr an prev
+      while(currentNode != null)
+      {
+        //check if condition matches and remove element
+        if (predicate(currentNode.Data))
+        {
+          if (_head == currentNode)
+          {
+            _head = _head.Pointer;
+          }
+          else
+          {
+            previousNode.Pointer = currentNode.Pointer;
+            currentNode = previousNode;
+          }
+          count++; //keep count of removed elements
+        }
+        //update linking of remaining elements after removal
+        previousNode = currentNode;
+        currentNode = currentNode.Pointer;
+      }
+      //update the length of remaining elements
+      _length -= count;
+
+      return count;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
