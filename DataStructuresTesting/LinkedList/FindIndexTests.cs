@@ -22,15 +22,29 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
-    public void FindIndex_OfValidPredicate_ReturnIndexOfElementThatMatchesPredicate()
+    [TestCase("Neo")]
+    public void FindIndex_OfValidPredicate_ReturnIndexOfElementThatMatchesPredicate(string value)
     {
       //Arrange
-      var value = "Neo";
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
       //Act
       var index = myLinkedList.FindIndex(x => x == value);
       //Assert
       Assert.IsTrue(myLinkedList[index] == value);
+    }
+
+    [Test]
+    [TestCase("Lame")]
+    public void FindIndex_OfValidRecurringElement_ReturnIndexOfTheFirstOccurenceOfElement(string value)
+    {
+      //Arrange
+      var secondIndex = 4;
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+
+      //Act
+      var firstIndex = myLinkedList.FindIndex(x => x == value);
+      //Assert
+      Assert.IsTrue(myLinkedList[firstIndex] == myLinkedList[secondIndex] && firstIndex != secondIndex);
     }
   }
 }
