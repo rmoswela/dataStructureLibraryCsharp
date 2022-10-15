@@ -46,5 +46,18 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.IsTrue(myLinkedList[firstIndex] == myLinkedList[secondIndex] && firstIndex != secondIndex);
     }
+
+    [Test]
+    [TestCase("nothing")]
+    public void FindIndex_OfElementNotFoundOnList_ReturnsNegativeValueToMeanNotFound(string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+
+      //Act
+      var index = myLinkedList.FindIndex(x => x == value);
+      //Assert
+      Assert.Negative(index);
+    }
   }
 }
