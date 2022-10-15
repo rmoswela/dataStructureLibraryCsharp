@@ -41,6 +41,7 @@ namespace DataStructures
     public T this[int index]
     {
       get => FindByIndex(index);
+      set => Insert(index, value);
     }
 
     //Adds objects or values to end of list
