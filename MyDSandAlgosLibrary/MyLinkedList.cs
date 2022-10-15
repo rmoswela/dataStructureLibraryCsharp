@@ -226,6 +226,38 @@ namespace DataStructures
       return false;
     }
 
+    //Removes element at the specified index of list
+    //Time complexity is O(n) operation where n is (count - index)
+    public void RemoveAt(int index)
+    {
+      if (index < 0 || index >= _length)
+        throw new ArgumentOutOfRangeException("index");
+
+      if (index == 0)
+      {
+        _head = _head.Pointer;
+        _length--;
+        return;
+      }
+
+      Node<T> currentNode = _head;
+      Node<T> previousNode = null;
+
+      for (int count = 0; count < _length; count++)
+      {
+        if (index == count)
+        {
+          previousNode.Pointer = currentNode.Pointer;
+          currentNode = previousNode;
+          _length--;
+          return;
+        }
+        previousNode = currentNode;
+        currentNode = currentNode.Pointer;
+      }
+      return;
+    }
+
     //create empty element of capacity provided
     private void CreateEmptyElements(int capacity)
     {
