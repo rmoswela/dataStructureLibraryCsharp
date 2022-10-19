@@ -8,24 +8,31 @@ namespace AppToRunLibrary
   {
     private static void Main(string[] args)
     {
-      dynamic arr = new MyArray();
+      // MyArray - Creating Instances
+      var arrList = new List<dynamic>() {"r", "e", "u", "b", "e", "n" };
+      dynamic arrInitWithVal = new MyArray(arrList); //instantiate with values
+      Console.WriteLine("InputWithVal: {0}\n InputArr Length: {1}\n Output: {2}", PrintItemsInArray(arrInitWithVal), arrInitWithVal.Length, PrintItemsInArray(arrInitWithVal));
+      dynamic arrInitWithLen = new MyArray(5); //instantiate with length but no values
+      IntializeTheArray(arrInitWithLen);
+      Console.WriteLine("ArrLength: {0}\n Output: {1}", arrInitWithLen.Length, PrintItemsInArray(arrInitWithLen));
+      dynamic arr = new MyArray();//instantiate empty
       Console.WriteLine("Array: {0}, Arr Length: {1}", arr, arr.Length);
       arr = AddItemsToArray(arr);
       dynamic arrCopy = new MyArray();
       arrCopy.Copy(arr, arr.Length);
-      Console.WriteLine("Item: {0}, ArrayLength: {1}", arr.GetItem(3), arr.Length);
-      Console.WriteLine("arrCopyItem: {0}, arrCopyLength: {1}", arrCopy.GetItem(3), arrCopy.Length);
+      Console.WriteLine("Item: {0}, ArrayLength: {1}", arr[3], arr.Length);
+      Console.WriteLine("arrCopyItem: {0}, arrCopyLength: {1}", arrCopy[3], arrCopy.Length);
       Console.WriteLine("arrCopyItems: {0}", PrintItemsInArray(arr));
       arrCopy.Reverse();
       Console.WriteLine("arrCopyReversedItems: {0}", PrintItemsInArray(arrCopy));
-      arr.RemoveLastItem();
+      arr.RemoveLastElement();
       Console.WriteLine("ArrayLength after deletion: {0}, LastItem: {1}", arr.Length,
-        arr.GetItem(arr.Length - 1));
-      arr.RemoveItem(1);
+        arr[arr.Length - 1]);
+      arr.RemoveElement(1);
       Console.WriteLine("ArrayLength after deletion of specified index: {0}, LastItem: {1}", arr.Length,
-        arr.GetItem(1));
-      dynamic firstIndex = arr.FindIndexItemFirstOccurance("Reuben");
-      var lastIndex = arr.FindIndexItemLastOccurance("Reuben");
+        arr[1]);
+      dynamic firstIndex = arr.FindIndexOfElementFirstOccurrence("Reuben");
+      var lastIndex = arr.FindIndexOfElementLastOccurrence("Reuben");
       Console.WriteLine("ArrayLength: {0}, FirstOccuranceIndex: {1}, LastOccurenceIndex: {2}", arr.Length,
         firstIndex, lastIndex);
 
@@ -68,6 +75,7 @@ namespace AppToRunLibrary
 
       //Linked Lists
       MyLinkedList<string> list = new MyLinkedList<string>();
+      var list1 = new MyLinkedList<int>(3);
       list.AddEnd("Reuben1");
       list.AddEnd("Reuben2");
       Console.WriteLine("Element Count: {0}\n ElementData: {1}", list.Count, list.Find(x=>x.Contains("Reuben2")));
@@ -90,16 +98,29 @@ namespace AppToRunLibrary
       return toPrint;
     }
 
-    private static string PrintItemsInArray(MyArray array)
+    private static dynamic PrintItemsInArray(MyArray array)
     {
       string print = "[";
-      for (int index = 0; index < array.Length; index++)
+      int index = 0;
+      while ( index < array.Length)
       {
-        print += " " + string.Join(",", array.GetItem(index));
-        if (index == array.Length - 1)
-          print += "]";
+        print += string.Join(",", array[index]) + " ";
+        index++;
+      }
+      if (index == array.Length){
+          print = print.TrimEnd() + "]";
       }
       return print;
+    }
+
+    private static void IntializeTheArray(MyArray arrayWithLen)
+    {
+      int[] primeNums = new int[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+      Random random = new Random();
+      for (int index = 0; index < arrayWithLen.Length; index++)
+      {
+        arrayWithLen[index] = random.Next(0, primeNums.Length);
+      }
     }
 
     private static MyArray AddItemsToArray(MyArray inputArray)
@@ -107,7 +128,7 @@ namespace AppToRunLibrary
       var names = new string[] {"Reuben", "Moswela", "Neo", "Khachana", "Meleko", "Reuben", "Gabrielle"};
       for (int loop = 0; loop < names.Length; loop++)
       {
-        inputArray.AddItem(names[loop]);
+        inputArray.AddElement(names[loop]);
       }
 
       return inputArray;

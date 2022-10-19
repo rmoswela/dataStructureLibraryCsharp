@@ -205,6 +205,8 @@ namespace DataStructures
       Node<T> tempNode = _head;
       for (int count = 0; count < _length; count++)
       {
+        if (value == null && tempNode.Data == null)
+          return true;
         if (tempNode.Data.Equals(value))
           return true;
         tempNode = tempNode.Pointer;

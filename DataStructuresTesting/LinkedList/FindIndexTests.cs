@@ -38,7 +38,7 @@ namespace DataStructuresTesting.LinkedList
     public void FindIndex_OfValidRecurringElement_ReturnIndexOfTheFirstOccurenceOfElement(string value)
     {
       //Arrange
-      var secondIndex = 4;
+      var secondIndex = 5;
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
 
       //Act
