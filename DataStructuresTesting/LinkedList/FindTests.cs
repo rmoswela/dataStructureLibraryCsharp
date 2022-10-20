@@ -38,12 +38,12 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase("Meleko")]
-    public void Find_AStringElementInAListThatContainsANullElement_ThrowsArgumentNullException(string value)
+    public void Find_AStringElementInAListThatContainsANullElement_ThrowsNullReferenceException(string value)
     {
       //Arrange
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
       //Act and Assert
-      Assert.Throws<ArgumentNullException>(() => myLinkedList.Find(x => x.Contains(value)));
+      Assert.Throws<NullReferenceException >(() => myLinkedList.Find(x => x.Contains(value)));
     }
 
     [Test]
