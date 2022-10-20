@@ -38,13 +38,26 @@ namespace DataStructuresTesting.LinkedList
     public void FindIndex_OfValidRecurringElement_ReturnIndexOfTheFirstOccurenceOfElement(string value)
     {
       //Arrange
-      var secondIndex = 4;
+      var secondIndex = 5;
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
 
       //Act
       var firstIndex = myLinkedList.FindIndex(x => x == value);
       //Assert
       Assert.IsTrue(myLinkedList[firstIndex] == myLinkedList[secondIndex] && firstIndex != secondIndex);
+    }
+
+    [Test]
+    [TestCase("nothing")]
+    public void FindIndex_OfElementNotFoundOnList_ReturnsNegativeValueToMeanNotFound(string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+
+      //Act
+      var index = myLinkedList.FindIndex(x => x == value);
+      //Assert
+      Assert.Negative(index);
     }
   }
 }

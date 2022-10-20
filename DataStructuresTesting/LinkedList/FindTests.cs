@@ -28,11 +28,22 @@ namespace DataStructuresTesting.LinkedList
     public void Find_AStringElementThatDoesNotMatchesConditionDefinedByPredicate_ReturnDefaultValueForString(string value)
     {
       //Arrange
-      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      IEnumerable<string> listOfStrings = new[] { "Reuben", "Neo", "Lame", "Moswela" };
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(listOfStrings);
       //Act
       string results = myLinkedList.Find(x => x.Contains(value));
       //Assert
       Assert.AreEqual(null, results);
+    }
+
+    [Test]
+    [TestCase("Meleko")]
+    public void Find_AStringElementInAListThatContainsANullElement_ThrowsNullReferenceException(string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
+      //Act and Assert
+      Assert.Throws<NullReferenceException >(() => myLinkedList.Find(x => x.Contains(value)));
     }
 
     [Test]
