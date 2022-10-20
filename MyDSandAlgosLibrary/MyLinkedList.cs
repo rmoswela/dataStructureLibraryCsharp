@@ -103,7 +103,7 @@ namespace DataStructures
         throw new ArgumentNullException();
       //temporary node to act as an iterator
       Node<T> tempNode = _head;
-      for (int count = 0; count < _length; count++)
+      while (tempNode != null)
       {
         //check if the predicate matches, if not then move to next node
         if (predicate(tempNode.Data))
@@ -187,7 +187,7 @@ namespace DataStructures
         throw new ArgumentNullException();
 
       Node<T> tempNode = _head;
-      for (int count = 0; count < _length; count++)
+      while (tempNode != null)
       {
         if (predicate(tempNode.Data))
           return true;
@@ -203,7 +203,7 @@ namespace DataStructures
     public bool Contains(T value)
     {
       Node<T> tempNode = _head;
-      for (int count = 0; count < _length; count++)
+      while (tempNode != null)
       {
         if (value == null && tempNode.Data == null)
           return true;
