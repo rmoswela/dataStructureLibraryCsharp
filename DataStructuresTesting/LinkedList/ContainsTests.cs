@@ -31,5 +31,17 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.IsTrue(result);
     }
+
+    [Test]
+    [TestCase(17)]
+    public void Contains_ValidIntValue_ReturnTrue(int value)
+    {
+      //Arrange
+      MyLinkedList<int> myLinkedList = new MyLinkedList<int>(TestData.primeNumbers);
+      //Act
+      var result = myLinkedList.Contains(value);
+      //Assert
+      Assert.IsTrue(result);
+    }
   }
 }
