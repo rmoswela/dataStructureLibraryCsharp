@@ -43,7 +43,7 @@ namespace DataStructuresTesting.LinkedList
       //Arrange
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestValues);
       //Act and Assert
-      Assert.Throws<NullReferenceException >(() => myLinkedList.Find(x => x.Contains(value)));
+      Assert.Throws<NullReferenceException>(() => myLinkedList.Find(x => x.Contains(value)));
     }
 
     [Test]
