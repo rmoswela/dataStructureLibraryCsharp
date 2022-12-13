@@ -19,5 +19,17 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.IsTrue(result);
     }
+
+    [Test]
+    [TestCase("Lame")]
+    public void Contains_ValidStringValue_ReturnTrue(string value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestData.EnumerableTestValues);
+      //Act
+      var result = myLinkedList.Contains(value);
+      //Assert
+      Assert.IsTrue(result);
+    }
   }
 }
