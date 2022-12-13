@@ -43,5 +43,17 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.IsTrue(result);
     }
+
+    [Test]
+    [TestCase(17)]
+    public void Contains_DoubleValueThatIsNotOnList_ReturnFalse(int value)
+    {
+      //Arrange
+      MyLinkedList<double> myLinkedList = new MyLinkedList<double>(TestData.squaredDoubles);
+      //Act
+      var result = myLinkedList.Contains(value);
+      //Assert
+      Assert.IsFalse(result);
+    }
   }
 }
