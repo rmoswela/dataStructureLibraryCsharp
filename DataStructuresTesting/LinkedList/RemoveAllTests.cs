@@ -40,5 +40,16 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.That(results, Is.EqualTo(0));
     }
+
+    [Test]
+    public void RemoveAll_CharacterE_ReturnsTwoAsNumberOfElementRemoved()
+    {
+      //Arrange
+      MyLinkedList<char> myLinkedList = new MyLinkedList<char>(TestData.charList);
+      //Act
+      var results = myLinkedList.RemoveAll(value => value.Equals('e'));
+      //Assert
+      Assert.That(results, Is.EqualTo(2));
+    }
   }
 }
