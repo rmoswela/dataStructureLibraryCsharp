@@ -33,6 +33,18 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
+    public void Remove_LastNodeInTheList_ReturnsTrue()
+    {
+      //Arrange 
+      MyLinkedList<double> myLinkedList = new MyLinkedList<double>(TestData.squaredDoubles);
+      var lastNodeInList = myLinkedList[myLinkedList.Count - 1];
+      //Act
+      var results = myLinkedList.Remove(lastNodeInList);
+      //Assert
+      Assert.IsTrue(results);
+    }
+
+    [Test]
     [TestCase("Moswela")]
     public void Remove_ValueFromEmptyList_ReturnsFalse(string value)
     {
