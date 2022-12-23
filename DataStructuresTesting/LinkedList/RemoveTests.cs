@@ -45,6 +45,18 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
+    [TestCase('A')]
+    public void Remove_ValueThatsDoesNotAppearInList_ReturnsFalse(char value)
+    {
+      //Arrange 
+      MyLinkedList<char> myLinkedList = new MyLinkedList<char>(TestData.charList);
+      //Act
+      var results = myLinkedList.Remove(value);
+      //Assert
+      Assert.IsFalse(results);
+    }
+
+    [Test]
     [TestCase("Moswela")]
     public void Remove_ValueFromEmptyList_ReturnsFalse(string value)
     {
