@@ -242,7 +242,7 @@ namespace DataStructures
     {
       //checks for value in the first node
       //since we don't have previous node
-      if (_head.Data.Equals(value))
+      if (_head != null && _head.Data.Equals(value))
       {
         _head = _head.Pointer;
         _length--;
