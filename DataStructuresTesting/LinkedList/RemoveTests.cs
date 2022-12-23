@@ -21,8 +21,20 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
+    [TestCase(2)]
+    public void Remove_FirstNodeInTheList_ReturnsTrue(int value)
+    {
+      //Arrange 
+      MyLinkedList<int> myLinkedList = new MyLinkedList<int>(TestData.primeNumbers);
+      //Act
+      var results = myLinkedList.Remove(value);
+      //Assert
+      Assert.IsTrue(results);
+    }
+
+    [Test]
     [TestCase("Moswela")]
-    public void Remove_valueFromEmptyList_ReturnsFalse(string value)
+    public void Remove_ValueFromEmptyList_ReturnsFalse(string value)
     {
       //Arrange 
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>();
