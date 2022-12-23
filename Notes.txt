@@ -1,0 +1,8 @@
+List of concepts to incorportate at a later stage.
+
+- OOP principles
+- IEquatable and IEqualityComparer
+- IEnumerable
+- Proper Usage of Delegates and generics
+- CI/CD output being a nuget package
+- T2 tests
