@@ -1,5 +1,6 @@
 ﻿using DataStructures;
 using NUnit.Framework;
+using System;
 
 namespace DataStructuresTesting.LinkedList
 {
@@ -19,6 +20,16 @@ namespace DataStructuresTesting.LinkedList
 
       //Assert
       Assert.That(results, Is.EqualTo(3));
+    }
+
+    [Test]
+    public void RemoveAll_WhenPredicateIsNull_ThrowsArgumentNullException()
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestData.EnumerableTestValues);
+
+      //Act and Assert
+      Assert.Throws<ArgumentNullException>(() => myLinkedList.RemoveAll(null));
     }
   }
 }
