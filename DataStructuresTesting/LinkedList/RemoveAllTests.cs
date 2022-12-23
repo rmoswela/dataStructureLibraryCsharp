@@ -42,7 +42,7 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
-    public void RemoveAll_CharacterE_ReturnsTwoAsNumberOfElementRemoved()
+    public void RemoveAll_OccarancesOfCharacter_ReturnsTwoAsNumberOfElementRemoved()
     {
       //Arrange
       MyLinkedList<char> myLinkedList = new MyLinkedList<char>(TestData.charList);
@@ -50,6 +50,20 @@ namespace DataStructuresTesting.LinkedList
       var results = myLinkedList.RemoveAll(value => value.Equals('e'));
       //Assert
       Assert.That(results, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void RemoveAll_OccarancesOfString_ReturnsFiveAsNumberOfElementRemoved()
+    {
+      //Arrange
+      var listOfStrings = new[] { "Reuben", "Moswela", "Neo", "Reuben", "Reuben", "Reuben", "Lame", "Reuben"};
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(listOfStrings);
+      var listCountBefore = myLinkedList.Count;
+      //Act
+      var results = myLinkedList.RemoveAll(value => value.Equals("Reuben"));
+      //Assert
+      Assert.That(results, Is.EqualTo(5));
+      Assert.That(myLinkedList.Count, Is.LessThan(listCountBefore));
     }
   }
 }
