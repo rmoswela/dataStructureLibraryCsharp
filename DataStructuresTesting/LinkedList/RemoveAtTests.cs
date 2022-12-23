@@ -25,6 +25,20 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
+    public void RemoveAt_LastIndexOfValidList_ReturnsListCountReducedByOne()
+    {
+      //Arrange
+      MyLinkedList<char> myLinkedList = new MyLinkedList<char>(TestData.charList);
+      var listCountBefore = myLinkedList.Count;
+      var valueToRemove = myLinkedList[myLinkedList.Count -1];
+      //Act
+      myLinkedList.RemoveAt(myLinkedList.Count - 1);
+      //Assert
+      Assert.That(myLinkedList.Count, Is.LessThan(listCountBefore));
+      Assert.AreNotEqual(valueToRemove, myLinkedList[myLinkedList.Count -1]);
+    }
+
+    [Test]
     [TestCase(100)]
     public void RemoveAt_IndexOutOfBounds_ThrowsArgumentOutOfRangeException(int value)
     {
