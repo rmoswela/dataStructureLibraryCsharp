@@ -14,10 +14,8 @@ namespace DataStructuresTesting.LinkedList
     {
       //Arrange
       MyLinkedList<int> myLinkedList = new MyLinkedList<int>(TestData.primeNumbers);
-
       //Act
       var results = myLinkedList.RemoveAll(value => value <= 5);
-
       //Assert
       Assert.That(results, Is.EqualTo(3));
     }
@@ -30,6 +28,17 @@ namespace DataStructuresTesting.LinkedList
 
       //Act and Assert
       Assert.Throws<ArgumentNullException>(() => myLinkedList.RemoveAll(null));
+    }
+
+    [Test]
+    public void RemoveAll_EvenNumbersInEmptyList_ReturnsZeroAsNumberOfElementRemoved()
+    {
+      //Arrange
+      MyLinkedList<int> myLinkedList = new MyLinkedList<int>();
+      //Act
+      var results = myLinkedList.RemoveAll(value => (value % 2 == 0));
+      //Assert
+      Assert.That(results, Is.EqualTo(0));
     }
   }
 }
