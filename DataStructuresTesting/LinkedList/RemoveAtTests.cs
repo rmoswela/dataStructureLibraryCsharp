@@ -39,6 +39,19 @@ namespace DataStructuresTesting.LinkedList
     }
 
     [Test]
+    [TestCase(4)]
+    public void RemoveAt_MiddleIndexOfValidList_ReturnsListCountReducedByOne(int value)
+    {
+      //Arrange
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestData.EnumerableTestValues);
+      var listCountBefore = myLinkedList.Count;
+      //Act
+      myLinkedList.RemoveAt(value);
+      //Assert
+      Assert.That(myLinkedList.Count, Is.LessThan(listCountBefore));
+    }
+
+    [Test]
     [TestCase(100)]
     public void RemoveAt_IndexOutOfBounds_ThrowsArgumentOutOfRangeException(int value)
     {
