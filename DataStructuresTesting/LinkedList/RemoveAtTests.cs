@@ -1,5 +1,6 @@
 ﻿using DataStructures;
 using NUnit.Framework;
+using System;
 
 namespace DataStructuresTesting.LinkedList
 {
@@ -21,6 +22,16 @@ namespace DataStructuresTesting.LinkedList
       //Assert
       Assert.That(myLinkedList.Count, Is.LessThan(listCountBefore));
       Assert.AreNotEqual(valueToRemove, myLinkedList[value]);
+    }
+
+    [Test]
+    [TestCase(100)]
+    public void RemoveAt_IndexOutOfBounds_ThrowsArgumentOutOfRangeException(int value)
+    {
+      //Arrange
+      MyLinkedList<int> myLinkedList = new MyLinkedList<int>();
+      //Act and Assert
+      Assert.Throws<ArgumentOutOfRangeException>(() => myLinkedList.RemoveAt(value));
     }
   }
 }
