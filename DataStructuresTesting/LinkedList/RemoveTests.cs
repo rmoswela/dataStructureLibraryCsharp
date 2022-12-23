@@ -1,5 +1,6 @@
 ﻿using DataStructures;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace DataStructuresTesting.LinkedList
 {
@@ -10,14 +11,18 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase("Moswela")]
-    public void Remove_ValidStringInTheMiddleOfList_ReturnsTrue(string value)
+    public void Remove_FirstOccuranceOfValueInAList_ReturnsTrue(string value)
     {
       //Arrange
-      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestData.EnumerableTestValues);
+      var listOfStrings = new List<string>() { "Moswela", "Neo", "Moswela", "Reuben" };
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>(listOfStrings);
+      var listCountBefore = myLinkedList.Count;
       //Act
       var results = myLinkedList.Remove(value);
       //Assert
       Assert.IsTrue(results);
+      Assert.That(myLinkedList[1], Is.EqualTo(value));
+      Assert.That(myLinkedList.Count, Is.LessThan(listCountBefore));
     }
 
     [Test]
