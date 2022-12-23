@@ -10,7 +10,7 @@ namespace DataStructuresTesting.LinkedList
 
     [Test]
     [TestCase("Moswela")]
-    public void Remove_ValidString_ReturnsTrue(string value)
+    public void Remove_ValidStringInTheMiddleOfList_ReturnsTrue(string value)
     {
       //Arrange
       MyLinkedList<string> myLinkedList = new MyLinkedList<string>(TestData.EnumerableTestValues);
@@ -18,6 +18,18 @@ namespace DataStructuresTesting.LinkedList
       var results = myLinkedList.Remove(value);
       //Assert
       Assert.IsTrue(results);
+    }
+
+    [Test]
+    [TestCase("Moswela")]
+    public void Remove_valueFromEmptyList_ReturnsFalse(string value)
+    {
+      //Arrange 
+      MyLinkedList<string> myLinkedList = new MyLinkedList<string>();
+      //Act
+      var results = myLinkedList.Remove(value);
+      //Assert
+      Assert.IsFalse(results);
     }
   }
 }
